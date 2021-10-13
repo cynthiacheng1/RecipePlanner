@@ -2,6 +2,7 @@
 
 How To Use:
 clone repository 
+
 run python recipeplanner.py 
 
 Go to: 
