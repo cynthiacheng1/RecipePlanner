@@ -1,0 +1,53 @@
+<div class="card " style="margin-bottom: 10px">
+    <div class="container">
+        <div>
+            <form class="form-horizontal">
+                <!-- <label class="control-label col-sm-2">Email</label> -->
+                <div class="input-group form-group col-sm-8">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input id="email" type="text" [(ngModel)]="user.email" name="email" class="form-control"
+                        placeholder="email">
+
+                </div>
+                <div class="input-group form-group col-sm-8">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input id="fname" type="text" [(ngModel)]="user.fname" name="fname" class="form-control"
+                        placeholder="first name">
+
+                </div>
+
+                <div class="input-group form-group col-sm-8">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input id="lname" type="text" [(ngModel)]="user.lname" name="lname" class="form-control"
+                        placeholder="last name">
+
+                </div>
+
+                <div class="input-group form-group col-sm-8">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input id="password" type="password" [(ngModel)]="user.password" name="password"
+                        class="form-control" placeholder="password">
+                </div>
+                <div class="input-group form-group col-sm-8">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input id="password2" type="password" [(ngModel)]="secondpassword" name="password2"
+                        class="form-control" placeholder="confirm password">
+                </div>
+                <div class="form-group col-sm-offset-2 col-sm-8">
+                    <button (click)="register()" class="btn login_btn btn-primary">Register</button>
+                    <!-- <input id="formButton" type="button" value="Login" class="btn float-right login_btn" onclick="loginSubmit()"> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
