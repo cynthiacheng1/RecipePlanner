@@ -1,4 +1,3 @@
-import { EmailValidator } from "@angular/forms";
 
 export class User {
 
@@ -7,6 +6,7 @@ export class User {
     password: string;
     fname: string;
     lname: string;
+    fav_recipes: number[];
 
     constructor(){}
 

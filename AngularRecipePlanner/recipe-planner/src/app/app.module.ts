@@ -8,6 +8,10 @@ import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { FormsModule } from '@angular/forms';
 import { AddrecipeComponent } from './addrecipe/addrecipe.component';
+import { PantryComponent } from './pantry/pantry.component';
+import { SearchComponent } from './search/search.component';
+import { ListComponent } from './list/list.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { AddrecipeComponent } from './addrecipe/addrecipe.component';
     NavbarComponent,
     RegisterComponent,
     AboutComponent,
-    AddrecipeComponent
+    AddrecipeComponent,
+    PantryComponent,
+    SearchComponent,
+    ListComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
