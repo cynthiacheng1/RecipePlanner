@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-sm navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="Planner" style = "color:rgb(243, 17, 17)">
+        Recipe Planner
+    </a>
+    <div class="navbar-header" id="example-1" aria-expanded="false">
+    
+        <ul class = "nav navbar-nav navbar-right">
+            <li *ngIf = "!ifLogged()" class="nav-item" style= "margin-right:25px" style = "margin-top: 5px"> 
+                <button class="btn btn-info ml-2 mr-2" routerLink="login">Login</button>
+                <button class="btn btn-info ml-2 mr-2" routerLink="register" style = "margin-left: 5px">Register</button>
+                <button class="btn btn-info ml-2 mr-2" routerLink="about" style = "margin-left: 5px">About</button>
+                <button class="btn btn-info ml-2 mr-2" routerLink="addrecipe" style = "margin-left: 5px">Add Recipe</button>
+            </li>
+        </ul>
+        <li *ngIf = "ifLogged()" class="nav-item" style="margin-right:25px">
+            <button class="btn btn-info ml-2 mr-2" routerLink="recipes">Recipies</button>
+            <button class="btn btn-info ml-2 mr-2" routerLink="addrecipe">Add Recipe</button>
+            <button class="btn btn-info ml-2 mr-2" routerLink="login" (click) = "logout()">Logout</button>
+        </li>
+    
+    
+    </div>
+    </nav>

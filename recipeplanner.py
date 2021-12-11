@@ -6,6 +6,9 @@ app = Flask(__name__)
 def home():
     return render_template("base.html", content = "")
 
+@app.route("/add_recipe")
+def add_recipe():
+    return render_template("addrecipe.html", content = "")
 
 recipeDic = {"cheese,dough,basil,tomato sauce" : "pizza", "cheese,basil,tomato sauce" : "spaghetti"}
 
@@ -39,4 +42,4 @@ def recipe(recipe):
 #     return redirect(url_for("home"))
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=true)
