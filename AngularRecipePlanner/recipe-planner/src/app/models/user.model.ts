@@ -9,7 +9,7 @@ export class User {
     fav_recipes: number[];
 
     token: string;
-    
+
     constructor(){}
 
 }

@@ -26,10 +26,14 @@ export class EndpointsService {
   public readonly ADD_PANTRY: string = this.authURL + 'pantry/add';
   // Remove ingredient from pantry
   public readonly REMOVE_PANTRY: string = this.authURL + 'pantry/remove';
+  // Get recipes based on pantry
+  public readonly GET_PANTRY_RECIPES: string = this.authURL + 'pantry/getrecipes';
   // Favorite recipe
   public readonly FAVORITE_RECIPE: string = this.authURL + 'recipe/favorite';
   // Unfavorite recipe
   public readonly UNFAVORITE_RECIPE: string = this.authURL + 'recipe/unfavorite';
+  // Get favorite recipes
+  public readonly GET_FAVOTIRE_RECIPES: string = this.authURL + 'recipe/favorites'
 
   constructor(private http: HttpClient) { }
 }
