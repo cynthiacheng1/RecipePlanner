@@ -2,12 +2,12 @@ export class Recipe {
 
     id: number;
     name: string;
-    description: string;
-    ingredients: string[];
+    ingredients: string;
     cleaned_ingredients: string[];
-    picture: string;
+    instructions: string;
+    link: string;
+    info: string;
     tags: string[];
-    health_info: string;
 
     constructor(){}
 }

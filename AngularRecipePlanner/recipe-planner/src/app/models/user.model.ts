@@ -8,6 +8,8 @@ export class User {
     lname: string;
     fav_recipes: number[];
 
+    token: string;
+    
     constructor(){}
 
 }
