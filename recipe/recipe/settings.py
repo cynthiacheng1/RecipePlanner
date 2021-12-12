@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'recipe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'recipe', 
-        'USER': 'user_id', 
-        'PASSWORD' : 'password', 
-        'HOST' : 'localhost', 
-        'PORT' :''
+        'NAME': 'd4ffvblvtgumij', 
+        'USER': 'umzmqeuuvlvwat', 
+        'PASSWORD' : '6aaf60d6386ace0884f3aa03fe485816979b196a6b7c5157bf32baa6d120ace2', 
+        'HOST' : 'ec2-54-204-128-96.compute-1.amazonaws.com', 
+        'PORT' :'5432'
     }
 }
 
