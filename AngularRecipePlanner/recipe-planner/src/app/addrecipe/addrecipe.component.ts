@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user.model';
+import { Recipe } from '../models/recipe.model';
+import { LoginService } from '../services/login.service';
+import { RecipeService } from '../services/recipe.service';
+import { ContextService } from '../services/context.service';
+import { ToastrService } from 'ngx-toastr'
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators'
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-addrecipe',
@@ -7,9 +16,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddrecipeComponent implements OnInit {
 
-  constructor() { }
+  recipe = new Recipe();
+  user = new User();
+  statusMessage: string;
+  
+  constructor(private router:Router, private _loginService:LoginService, private _recipeService:RecipeService, 
+    private _contextService:ContextService, private toastr: ToastrService) {}
 
-  ngOnInit(): void {
+    ngOnInit(): void {
+      if(this.ifLogged()){
+        this.user.email = this._contextService.getEmail();
+      }
+    }
+  
+    ifLogged(){
+      if (localStorage.getItem("logged") == "true"){
+        return true;
+      }
+      return false;
+    }
+
+    getFavorites(){
+      this._recipeService.AddRecipe(this.user, this.recipe).pipe(catchError(this.handleError)).subscribe((recipes) => { 
+        this.toastr.success("Recipe Added!")
+        location.reload();
+      }
+      ),
+      (err: Error) => {
+        this.statusMessage = "Favorite Recipes Error";
+        console.log(this.statusMessage, err)
+      }
+    }
+
+  handleError(error: any){
+    this.toastr.error("something failed")
+    return throwError("error");
   }
 
 }

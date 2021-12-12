@@ -1,8 +1,7 @@
 export class Pantry {
 
-    id: number;
+    user_id: number;
     ingredients: string[];
 
     constructor(){}
 }
-3

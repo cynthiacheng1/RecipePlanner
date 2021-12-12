@@ -35,8 +35,6 @@ export class LoginComponent implements OnInit {
   }
 
   loginAuth(tokenData: string){
-
-
     this.parsedToken = JSON.parse(tokenData);
 
     try{

@@ -8,7 +8,6 @@ import { ToastrService } from 'ngx-toastr'
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators'
 import { throwError } from 'rxjs';
-import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-search',
@@ -20,7 +19,6 @@ export class SearchComponent implements OnInit {
   user = new User();
   statusMessage: string;
   recipes = Array<Recipe>();
-
   ingredient: string;
   tag: string;
 
