@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   user = new User();
   statusMessage: string;
+  parsedToken: any;
 
   constructor(private router:Router, private _loginService:LoginService, 
     private _contextService:ContextService, private toastr: ToastrService) { }
@@ -25,8 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this._loginService.login(this.user).pipe(catchError(this.handleError)).subscribe((userData) => {
-      this.user = <User>userData; this.loginAuth(this.user);
+    this._loginService.login(this.user).pipe(catchError(this.handleError)).subscribe((tokenData) => { this.loginAuth(tokenData);
     }
     ),
     (err: Error) => {
@@ -35,26 +35,30 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  loginAuth(user: User){
-    if (user != null){
+  loginAuth(tokenData: string){
 
+
+    this.parsedToken = JSON.parse(tokenData);
+
+    try{
+
+      this.user.token = this.parsedToken.token;
       this.toastr.success("Logged in successfully")
-
-      this._contextService.store(user);
+      this._contextService.store(this.user);
       this.router.navigateByUrl('userHome')
-    }
-    else{
+
+    } catch(error: any){
+
       this.reset();
+      this.handleError(error);
     }
 
   }
   private reset(){
-      this.user.id = -1;
-      this.user.email = "";
-      this.user.password = "";
+      this.user = new User();
   }
 
-  handleError(error: Error){
+  handleError(error: any){
     this.toastr.error("Login failed")
     return throwError("error");
   }

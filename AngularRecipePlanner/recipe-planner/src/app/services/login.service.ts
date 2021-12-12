@@ -25,4 +25,11 @@ export class LoginService {
 
     return this._httpService.post(this.endpoints.REGISTER_USER, body)
   }
+
+  getInfo(user: User): Observable<any>{
+    let body = JSON.parse(JSON.stringify(user));
+    console.log(body);
+
+    return this._httpService.post(this.endpoints.GET_USER_INFO, body, {headers: new HttpHeaders({'Authorization' : user.token})})
+  }
 }

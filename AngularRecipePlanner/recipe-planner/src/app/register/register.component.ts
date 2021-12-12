@@ -30,8 +30,7 @@ export class RegisterComponent implements OnInit {
       console.log("False")
     }
     else{
-      this._loginService.register(this.user).subscribe((userData) => {
-        this.user = <User>userData; this.registerAuth(this.user);
+      this._loginService.register(this.user).subscribe((response) => { this.registerAuth(response);
       }),
       (err: Error) => {
         this.statusMessage = "Login Error";
@@ -40,17 +39,18 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  registerAuth(user: User){
-    if (user != null) {
-      this._contextService.store(user);
+  registerAuth(response: any){
+    if (response.status == 200) {
+      this._contextService.store(this.user);
       this.router.navigateByUrl('userHome')
+      console.log("registration successful")
     } else {
       this.reset();
     }    
   }
 
   private reset(){
-    
+    this.user = new User();
   }
 
 }

@@ -14,6 +14,8 @@ export class EndpointsService {
   public readonly REGISTER_USER: string = this.authURL + 'user/signup';
   // Login User
   public readonly LOGIN_USER: string = this.authURL + 'user/signin';
+  // get user info
+  public readonly GET_USER_INFO: string = this.authURL + 'user/info';
   // Search by ingredient and tag
   public readonly SEARCH_RECIPE_BY: string = this.authURL + 'recipe/searchby';
   // Get one recipe by id
