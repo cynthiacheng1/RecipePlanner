@@ -16,8 +16,8 @@ export class RecipeService {
 
   constructor(private _httpService: HttpClient, private endpoints: EndpointsService) { }
 
-  getRecipesSearchBy(ingredient: string, tag: string, user: User): Observable<any>{
-    return this._httpService.get(this.endpoints.SEARCH_RECIPE_BY + '/' + ingredient + '/' + tag, {headers: new HttpHeaders({'Authorization' : user.token})});
+  getRecipesSearchBy(ingredient: string, tag: string): Observable<any>{
+    return this._httpService.get(this.endpoints.SEARCH_RECIPE_BY + '/' + ingredient + '/' + tag);
   }
 
   getRecipesById(id: number, user: User): Observable<any>{
@@ -54,5 +54,9 @@ export class RecipeService {
 
   RemovePantryIngredient(user: User, ingredient: string): Observable<any>{
     return this._httpService.put(this.endpoints.REMOVE_PANTRY + '/' + user.id, ingredient, {headers: new HttpHeaders({'Authorization' : user.token})});
+  }
+
+  SeePantryIngredients(user: User): Observable<any>{
+    return this._httpService.put(this.endpoints.GET_PANTRY + '/' + user.id, {headers: new HttpHeaders({'Authorization' : user.token})});
   }
 }

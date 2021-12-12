@@ -36,6 +36,8 @@ export class EndpointsService {
   public readonly UNFAVORITE_RECIPE: string = this.authURL + 'recipe/unfavorite';
   // Get favorite recipes
   public readonly GET_FAVOTIRE_RECIPES: string = this.authURL + 'recipe/favorites'
+  // Get Pantry Ingredients
+  public readonly GET_PANTRY: string = this.authURL + 'pantry/see'
 
   constructor(private http: HttpClient) { }
 }

@@ -26,15 +26,15 @@ export class ContextService {
     localStorage.setItem("logged", "false")    
   }
 
-  getEmail(){
-    return localStorage.getItem(this.email);
+  getEmail(): string{
+    return localStorage.getItem(this.email) as string;
   }
 
-  getPass(){
-    return localStorage.getItem(this.pass);
+  getPass(): string{
+    return localStorage.getItem(this.pass) as string;
   }
 
-  getToken(){
-    return localStorage.getItem(this.token);
+  getToken(): string{
+    return localStorage.getItem(this.token) as string;
   }
 }

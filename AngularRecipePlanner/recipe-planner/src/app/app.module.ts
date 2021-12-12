@@ -14,7 +14,8 @@ import { ListComponent } from './list/list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RecipePageComponent } from './recipe-page/recipe-page.component'; 
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PantryComponent,
     SearchComponent,
     ListComponent,
-    ProfileComponent
+    ProfileComponent,
+    RecipePageComponent
   ],
   imports: [
     BrowserModule,
