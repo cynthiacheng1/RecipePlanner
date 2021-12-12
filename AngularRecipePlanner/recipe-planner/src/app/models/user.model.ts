@@ -4,12 +4,9 @@ export class User {
     id: number;
     email: string;
     password: string;
-    fname: string;
-    lname: string;
-    fav_recipes: number[];
-
+    name: string;
+    favRecipes: number[];
     token: string;
 
     constructor(){}
-
 }
