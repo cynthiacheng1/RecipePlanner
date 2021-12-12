@@ -2,19 +2,19 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
 class Recipe(models.Model):
-    name = models.CharField(max_length = 200, unique = True)
+    name = models.TextField()
     ingredients = models.TextField(blank=True, null=True)
     cleaned_ingredients = ArrayField(
-        models.IntegerField(),
-        size = 50
+        models.IntegerField()
     )
     instructions = models.TextField(blank=True, null=True)
-    picture_link = models.CharField(max_length = 500)
+    info = models.CharField(max_length = 1000, null = True)
+    link = models.TextField(blank=True, null=True)
     tags = ArrayField(
         models.CharField(max_length = 200),
         size = 20
     )
-    health_info = models.TextField(blank=True, null=True)
+    
 
     class Meta:
         db_table = 'recipes'
