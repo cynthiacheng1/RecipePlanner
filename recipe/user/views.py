@@ -22,7 +22,12 @@ class SignUpView(View):
                 email = data['email'],
                 password = crypted
             )
-            return HttpResponse(status = 200)
+            res_object = {
+                "name" : data['name'],
+                "email" : data['email'],
+                "password" : data['password']
+            }
+            return JsonResponse(res_object,status = 200)
         except KeyError:
             return JsonResponse({'message':'INVALID_KEYS'},status = 400)
         
