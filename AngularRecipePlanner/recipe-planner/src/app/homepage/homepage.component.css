@@ -127,7 +127,7 @@ ul.topnav li.dropdownIcon {			/*the drop down icon is added but it will not be s
     height: 40vh;
     position: relative;
     margin-bottom: 2rem;
-    background: url('./assets/hero.jpg') center/cover no-repeat;
+    background: url('../../assets/hero.jpg') center/cover no-repeat;
     border-radius: 0.30rem;
 }
 
@@ -303,7 +303,7 @@ h4.chef-header {
 }
 
 .recipe-img {
-    height: 15rem;
+    height: 25rem;
     width: 100%;
     border-radius: 0.25rem;
     margin-bottom: 1rem;

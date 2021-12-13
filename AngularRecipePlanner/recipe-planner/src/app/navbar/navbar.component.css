@@ -1,0 +1,81 @@
+
+nav {
+    margin: 10px 0 50px 0;			/*the nav bar shouldn't have gap between screen & it*/
+    width: 100%;		/*the width of nav should be using 100% any screen(mobile/desktop)*/
+}
+
+nav ul {
+    /*font-family: 'Roboto', sans-serif;*/			/* font selecting from google fonts*/
+    background-color: #fff;			/*nav bar color*/
+    margin: 2% 0 0 0;			/*the nav bar's unordered list shouldn't have gap between screen & it*/
+    padding: 0;			/*the nav bar's unordered list shouldn't have gap between navbar & it*/
+}
+
+ul.topnav li {
+    list-style: none;		/*list design i.e. the preffix dotes/stars of list will not be shown*/
+    float: left;			/*will be printed on left of screen & (because of this list is horizontal)*/
+}
+
+ul.topnav li.topnav-right {
+    float: right;			/* list will be printed on right of screen & (because of this list is horizontal)*/
+}
+
+ul.topnav li img {
+    margin: 5px 25px 10px 0px;
+}
+
+ul.topnav li a {
+    display: block;				/*i don't know what it does?*/
+    text-decoration: none;			/* no overline/underline on text*/
+    min-height: 16px;			/*minimum height of navbar should be 16px on screen*/
+    text-align: center;			/*it should be aligned center of its division*/
+    padding: 20px 14px 13px 14px;			/*gap between text & border should be 14px*/
+    /*text-transform: uppercase;			/*text should be in uppercase*/
+    color: #000;			/*the color of anchortext in navbar*/
+    font-weight: 500;
+    font-size: 17px;
+}
+
+ul.topnav li a.reg {
+    padding: 0px;
+}
+
+ul.topnav li button{
+    background-color: #645cff;
+    color: #fff;
+    margin-top: 7px;
+    padding: 7px 20px;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+ul.topnav li button:hover {
+    background-color: #504acc;
+}
+
+
+ul.topnav li a.dropdown-item{
+   
+    font-size: 15px;
+} 
+
+ul.topnav li a:hover {			/*the (:) symbol is used to assign action on element (:hover) hover effect is assigned*/
+    /*background-color: #65a5ff;			/*when the effect is visible it should show this color for element background*/
+    color: #645cff;			/*when the effect is visible it should show this color for text*/
+}
+
+ul.topnav li.dropdownIcon {			/*the drop down icon is added but it will not be shown in desktop view*/
+    display: none;			/*the display of drop down icon is none*/
+    font-size: 20;
+}
+
+.dropdown-menu{
+    color: red;
+}
+
+.dropdown-item{
+    color: green;
+}
