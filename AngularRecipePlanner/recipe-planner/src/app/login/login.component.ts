@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       this.user.token = this.parsedToken.token;
       this.toastr.success("Logged in successfully")
       this._contextService.store(this.user);
-      this.router.navigateByUrl('userHome')
+      this.router.navigateByUrl('home')
 
     } catch(error: any){
 
