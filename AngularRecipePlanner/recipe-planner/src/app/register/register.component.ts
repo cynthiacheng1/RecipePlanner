@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
 
     if (userData != null){
       this._contextService.store(this.user);
-      this.router.navigateByUrl('userHome')
+      this.router.navigateByUrl('home')
       console.log("registration successful")
     } 
     else {
@@ -57,5 +57,4 @@ export class RegisterComponent implements OnInit {
   private reset(){
     this.user = new User();
   }
-
 }
