@@ -9,6 +9,8 @@ import { RegisterComponent } from './register/register.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SearchComponent } from './search/search.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { BananapancakesComponent } from './bananapancakes/bananapancakes.component';
+import { VegetablesoupComponent } from './vegetablesoup/vegetablesoup.component';
 
 const routes: Routes = [
 
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'pantry', component: PantryComponent, pathMatch: 'full'},
   { path: 'search', component: SearchComponent, pathMatch: 'full'},
   { path: 'profile', component: ProfileComponent, pathMatch: 'full'},
-  { path: 'recipe', component: RecipeComponent, pathMatch: 'full'}
+  { path: 'recipe', component: RecipeComponent, pathMatch: 'full'},
+  { path: 'bananapancakes', component: BananapancakesComponent, pathMatch: 'full'},
+  { path: 'vegetablesoup', component: VegetablesoupComponent, pathMatch: 'full'}
 ];
 
 @NgModule({
