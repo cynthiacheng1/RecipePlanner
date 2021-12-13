@@ -93,7 +93,23 @@ class PantryView(View):
             return JsonResponse({'message':'INVALID_KEYS'}, status=400)
     
     @login_decorator
-    def delete(self,request):
+    def get(self,request):
+        try:
+            if request.user != '':
+                pantry = Pantry.objects.get(user_id = request.user.id)
+                result = []
+                for i in range(52):
+                    if pantry.ingredients[i]:
+                        result.append(Ingredient.objects.get(id=i+1).name)
+                return JsonResponse({'data':result},status=200)
+            else:
+                return JsonResponse({'message':'INVALID_USER'}, status=400)
+        except:
+            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
+
+class PantryDeleteView(View):
+    @login_decorator
+    def post(self,request):
         try:
             if request.user != '':
                 pantry = Pantry.objects.get(user_id = request.user.id)
@@ -107,21 +123,6 @@ class PantryView(View):
                         return HttpResponse(status=200)
                     else:
                         return JsonResponse({'message':'NOT_EXISTS'}, status=400)
-            else:
-                return JsonResponse({'message':'INVALID_USER'}, status=400)
-        except:
-            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
-    
-    @login_decorator
-    def get(self,request):
-        try:
-            if request.user != '':
-                pantry = Pantry.objects.get(user_id = request.user.id)
-                result = []
-                for i in range(52):
-                    if pantry.ingredients[i]:
-                        result.append(Ingredient.objects.get(id=i+1).name)
-                return JsonResponse({'data':result},status=200)
             else:
                 return JsonResponse({'message':'INVALID_USER'}, status=400)
         except:

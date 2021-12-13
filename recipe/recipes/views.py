@@ -63,8 +63,10 @@ class RecipeListView(View):
             if request.user != '':
                 data = json.loads(request.body)
                 name = data['name']
+                link = data['link']
                 instructions = data['instructions']
-                ingredient_list = data['ingredient_list']
+                tags = data['tags'].split(', ')
+                ingredient_list = data['ingredient_list'].split(', ')
                 encoded_lst = [0]*52
                 for ing_name in ingredient_list:
                     ingredient_id = Ingredient.objects.get(name = ing_name).id
@@ -73,7 +75,8 @@ class RecipeListView(View):
                     name = name,
                     cleaned_ingredients = encoded_lst,
                     instructions = instructions,
-                    tags = []
+                    tags = tags,
+                    link = link
                 )
                 return HttpResponse(status = 200)
             else:
