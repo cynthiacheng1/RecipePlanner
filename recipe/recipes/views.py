@@ -66,17 +66,19 @@ class RecipeListView(View):
                 link = data['link']
                 instructions = data['instructions']
                 tags = data['tags'].split(', ')
-                ingredient_list = data['ingredient_list'].split(', ')
+                info = data['info']
+                ingredients_list = data['ingredients_list'].split(', ')
                 encoded_lst = [0]*52
-                for ing_name in ingredient_list:
+                for ing_name in ingredients_list:
                     ingredient_id = Ingredient.objects.get(name = ing_name).id
                     encoded_lst[ingredient_id - 1] = 1
                 Recipe.objects.create(
                     name = name,
                     cleaned_ingredients = encoded_lst,
                     instructions = instructions,
-                    tags = tags,
-                    link = link
+                    info = info,
+                    link = link,
+                    tags = tags
                 )
                 return HttpResponse(status = 200)
             else:
