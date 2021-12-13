@@ -17,6 +17,9 @@ export class ContextService {
     localStorage.setItem(this.pass, user.password)
     localStorage.setItem(this.token, user.token)
     localStorage.setItem("logged", "true")
+
+    console.log(localStorage.getItem("token"))
+
   }
 
   logout(){

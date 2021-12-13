@@ -26,6 +26,7 @@ export class AddrecipeComponent implements OnInit {
     ngOnInit(): void {
       if(this.ifLogged()){
         this.user.email = this._contextService.getEmail();
+        this.user.token = this._contextService.getToken();
       }
     }
   
@@ -38,6 +39,7 @@ export class AddrecipeComponent implements OnInit {
 
     addRecipe(){
       console.log(this.recipe)
+      console.log(localStorage.getItem("token"))
       this._recipeService.AddRecipe(this.user, this.recipe).pipe(catchError(this.handleError)).subscribe((recipes) => { 
         this.toastr.success("Recipe Added!")
         location.reload();

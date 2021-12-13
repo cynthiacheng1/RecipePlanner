@@ -26,11 +26,12 @@ export class PantryComponent implements OnInit {
 
   ngOnInit(): void {
     this.user.email = this._contextService.getEmail();
+    this.user.token = this._contextService.getToken();
     this.getPantryIngredients();
   }
 
   getPantryIngredients(){
-    this._recipeService.SeePantryIngredients(this.user).pipe(catchError(this.handleError)).subscribe((ingredients) => { 
+    this._recipeService.SeePantryIngredients(this.user).pipe(catchError(this.handleError)).subscribe((ingredients) => {
       this.ingredients = ingredients;
     }
     ),
@@ -41,6 +42,8 @@ export class PantryComponent implements OnInit {
   }
 
   addIngredient(){
+    console.log(this.ingredient)
+    console.log(this.user.token)
     this._recipeService.AddPantryIngredient(this.user, this.ingredient).pipe(catchError(this.handleError)).subscribe(() => { 
       this.getPantryIngredients;
       location.reload();

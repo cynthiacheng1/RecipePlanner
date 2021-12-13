@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     console.log(this.user);
     this._loginService.login(this.user).pipe(catchError(this.handleError)).subscribe((tokenData) => {
       console.log(tokenData);
-      this.loginAuth(tokenData);
+      this.loginAuth(tokenData.token);
     }
     ),
     (err: Error) => {

@@ -42,7 +42,7 @@ export class RecipeService {
   }
 
   getRecipesPantry(user: User): Observable<any>{
-    return this._httpService.get(this.endpoints.GET_PANTRY_RECIPES + '/' + user.email, {headers: new HttpHeaders({'Authorization' : user.token})});
+    return this._httpService.get(this.endpoints.GET_PANTRY_RECIPES, {headers: new HttpHeaders({'Authorization' : user.token})});
   }
 
   AddRecipe(user: User, recipe: Recipe2): Observable<any>{
@@ -50,14 +50,14 @@ export class RecipeService {
   }
 
   AddPantryIngredient(user: User, ingredient: string): Observable<any>{
-    return this._httpService.put(this.endpoints.ADD_PANTRY + '/' + user.email, ingredient, {headers: new HttpHeaders({'Authorization' : user.token})});
+    return this._httpService.put(this.endpoints.ADD_PANTRY + "/addpantry/" + ingredient, {headers: new HttpHeaders({'Authorization' : user.token})});
   }
 
   RemovePantryIngredient(user: User, ingredient: string): Observable<any>{
-    return this._httpService.put(this.endpoints.REMOVE_PANTRY + '/' + user.email, ingredient, {headers: new HttpHeaders({'Authorization' : user.token})});
+    return this._httpService.put(this.endpoints.REMOVE_PANTRY + '/pantry-delete/' + ingredient, {headers: new HttpHeaders({'Authorization' : user.token})});
   }
 
   SeePantryIngredients(user: User): Observable<any>{
-    return this._httpService.put(this.endpoints.GET_PANTRY + '/' + user.email, {headers: new HttpHeaders({'Authorization' : user.token})});
+    return this._httpService.put(this.endpoints.GET_PANTRY, {headers: new HttpHeaders({'Authorization' : user.token})});
   }
 }

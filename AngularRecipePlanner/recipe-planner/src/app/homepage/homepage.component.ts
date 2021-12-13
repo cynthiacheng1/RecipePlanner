@@ -28,6 +28,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     if(this.ifLogged()){
       this.user.email = this._contextService.getEmail();
+      this.user.token = this._contextService.getToken();
     }
   }
 
@@ -83,6 +84,7 @@ export class HomepageComponent implements OnInit {
   }
 
   getAllPantryRecipes(){
+    console.log(this.user.token)
     this._recipeService.getRecipesPantry(this.user).pipe(catchError(this.handleError)).subscribe((recipes) => { 
       this.recipes = recipes.data;
       console.log(this.recipes);

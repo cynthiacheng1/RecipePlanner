@@ -34,7 +34,7 @@
 
           <div class="form-group">
             <label>Ingredients</label>
-            <input type="text" class="form-control" id="recipeName" placeholder="apple, olive oil">
+            <input type="text" class="form-control" id="recipeName" placeholder="apple, olive oil" [(ngModel)]="recipe.ingredients_list" name = "list">
             <small>Separate by commas</small>
           </div>
           <div>
