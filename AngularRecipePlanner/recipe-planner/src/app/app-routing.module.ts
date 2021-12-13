@@ -17,8 +17,6 @@ const routes: Routes = [
   { path: 'pantry', component: PantryComponent, pathMatch: 'full'},
   { path: 'search', component: SearchComponent, pathMatch: 'full'},
   { path: 'profile', component: ProfileComponent, pathMatch: 'full'}
-
-
 ];
 
 @NgModule({

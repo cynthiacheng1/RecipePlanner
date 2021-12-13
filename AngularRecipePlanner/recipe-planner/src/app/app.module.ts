@@ -15,7 +15,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RecipePageComponent } from './recipe-page/recipe-page.component'; 
+import { RecipePageComponent } from './recipe-page/recipe-page.component';
+import { FooterComponent } from './footer/footer.component'; 
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RecipePageComponent } from './recipe-page/recipe-page.component';
     SearchComponent,
     ListComponent,
     ProfileComponent,
-    RecipePageComponent
+    RecipePageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
