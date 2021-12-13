@@ -1,0 +1,552 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/*#################default####################*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Sans',sans-serif;
+}
+
+body,head {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+div.main {
+    padding: 0% 9%;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+div.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+div.row::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+/*################# nav bar ####################*/
+
+nav {
+    margin: 10px 0 50px 0;			/*the nav bar shouldn't have gap between screen & it*/
+    width: 100%;		/*the width of nav should be using 100% any screen(mobile/desktop)*/
+}
+
+nav ul {
+    /*font-family: 'Roboto', sans-serif;*/			/* font selecting from google fonts*/
+    background-color: #fff;			/*nav bar color*/
+    overflow: hidden;			/*if some elements are unable to fit in mobile screen then it should be hidden*/
+    margin: 2% 0 0 0;			/*the nav bar's unordered list shouldn't have gap between screen & it*/
+    padding: 0;			/*the nav bar's unordered list shouldn't have gap between navbar & it*/
+}
+
+ul.topnav li {
+    list-style: none;		/*list design i.e. the preffix dotes/stars of list will not be shown*/
+    float: left;			/*will be printed on left of screen & (because of this list is horizontal)*/
+}
+
+ul.topnav li.topnav-right {
+    float: right;			/* list will be printed on right of screen & (because of this list is horizontal)*/
+}
+
+ul.topnav li img {
+    margin: 5px 25px 5px 0px;
+}
+
+ul.topnav li a {
+    display: block;				/*i don't know what it does?*/
+    text-decoration: none;			/* no overline/underline on text*/
+    min-height: 16px;			/*minimum height of navbar should be 16px on screen*/
+    text-align: center;			/*it should be aligned center of its division*/
+    padding: 20px 14px 13px 14px;			/*gap between text & border should be 14px*/
+    /*text-transform: uppercase;			/*text should be in uppercase*/
+    color: #000;			/*the color of anchortext in navbar*/
+    font-weight: 500;
+    font-size: 17px;
+}
+
+ul.topnav li a.reg {
+    padding: 0px;
+}
+
+ul.topnav li button{
+    background-color: #645cff;
+    color: #fff;
+    margin-top: 7px;
+    padding: 7px 20px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: progress;
+    font-weight: 500;
+}
+
+ul.topnav li button:hover {
+    background-color: #504acc;
+}
+
+ul.topnav li a:hover {			/*the (:) symbol is used to assign action on element (:hover) hover effect is assigned*/
+    /*background-color: #65a5ff;			/*when the effect is visible it should show this color for element background*/
+    color: #645cff;			/*when the effect is visible it should show this color for text*/
+}
+
+ul.topnav li.dropdownIcon {			/*the drop down icon is added but it will not be shown in desktop view*/
+    display: none;			/*the display of drop down icon is none*/
+}
+
+/*################# hero-area ####################*/
+
+.hero {
+    height: 40vh;
+    position: relative;
+    margin-bottom: 2rem;
+    background: url('./assets/hero.jpg') center/cover no-repeat;
+    border-radius: 0.30rem;
+}
+
+.hero-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 0.30rem;
+}
+
+.hero-text {
+    color: #fff;
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+    margin: 0;
+    margin-bottom: 1.38rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 1.3;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    margin-top: 0;
+    font-size: 3.052rem;
+}
+
+h4 {
+    color: #fff;
+    margin: 0;
+    margin-bottom: 1.38rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 1.3;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-size: 1.563rem;
+}
+
+/*################# slider-area ####################*/
+
+div.chef {
+    padding: 1% 15%;
+}
+
+h4.chef-header {
+    color: #222;
+    margin: 50px 20px 20px 20px;
+    text-align: center;
+    font-size: 38px;
+}
+
+#slider {
+    overflow: hidden;
+    width: 680px;
+    position: relative;
+}
+
+#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 30s slider infinite;
+}
+
+#slider figure a img {
+    width: 680px;
+    /*width: 20%;*/
+    float: left;
+    overflow-x: hidden; 
+}
+
+@keyframes slider {
+    0% {
+        left: 0;
+    }
+
+    20% {
+        left: 0;
+    }
+
+    25% {
+        left: -100%;
+    }
+
+    45% {
+        left: -100%;
+    }
+
+    50% { 
+        left: -200%;
+    }
+
+    70% {
+        left: -200%;
+    }
+
+    75% {
+        left: -300%;
+    }
+
+    95% {
+        left: -300%;
+    }
+
+    100% {
+        left: -400%;
+    }
+}
+
+/*################# grid-area ####################*/
+
+.recipes-container {
+    display: grid;
+    gap: 2rem 1rem;
+}
+  
+.recipes-list {
+    display: grid;
+    gap: 2rem 1rem;
+    padding-bottom: 3rem;
+}
+  
+.tags-container {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+    /* background: blue; */
+}
+  
+.tags-container h5 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 25px;
+    text-transform: capitalize;
+    color: #222;
+}
+  
+.tags-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  
+}
+
+.tags-list a {
+    text-transform: capitalize;
+    display: block;
+    color: #64748b;
+    margin: 5px 0px;
+    transition: 0.3s ease-in-out all;
+}
+
+.tags-list a:hover {
+    color: #645cff;
+}
+  
+.recipe {
+    display: block;
+}
+
+.recipe:hover h6,
+.recipe:hover p {
+    color: #645cff;
+}
+
+.recipe-img {
+    height: 15rem;
+    width: 100%;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.recipe h6 {
+    margin-bottom: 0;
+    margin-top: 0.25rem;
+    line-height: 1;
+    font-size: 20px;
+    font-weight: 100;
+    color: #334155;
+}
+  
+.recipe p {
+    margin-bottom: 0;
+    line-height: 1;
+    color: #64748b;;
+    margin-top: 0.5rem;
+    letter-spacing: 1px;
+}
+
+/*################# tags ###################*/
+
+div.tags {
+    margin: 6% 2%;
+}
+
+div.tags h4 {
+    /*margin: 50px 20px 20px 20px;*/
+    margin-bottom: 2.3%;
+    color: #222;
+    text-align: center;
+    font-size: 38px;
+    font-weight: 100;
+}
+
+/*div.tags div.tags-grid {
+    padding: 0% 0% 2.5% 0%;
+}*/
+
+div.tags-grid div.row div.col-2 {
+    text-align: center;
+    margin: 30px 0px;
+} 
+
+div.tags div.tags-grid a {
+    text-transform: capitalize;
+    display: block;
+    color: #222;
+    margin: 5px 0px;
+    transition: 0.2s ease-in-out all;
+}
+
+div.tags div.tags-grid a:hover {
+    font-size: 20px;
+    color: #645cff;
+}
+
+/*################# footer ###################*/
+
+.page-footer {
+    text-align: center;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: #fff;
+}
+
+.page-footer h5 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.page-footer p {
+    margin-bottom: 0;
+    font-weight: 200;
+}
+
+.page-footer .footer-logo,
+.page-footer a {
+    color: #645cff;
+    font-weight: 600;
+}
+
+.footer-logo,
+.page-footer a:hover {
+    color: #504acc;
+}
+
+/*################# Mobile ###################*/
+
+/*#################nav bar####################*/
+
+@media screen and (max-width: 980px) {			/*media query's condition is, if screen width is below 680px action should  be taken*/
+    ul.topnav li:not(:nth-child(1)) {			/*every list item except the first list item is selected*/
+        display: none;			/*except the 1st list item every list item*/
+    }			/*this media query says that every list item of list'topnav' except(:not) the first postioned(nth) child which is */
+            /*'home' shouldn't appear or its display should be 'none' when the screen width is below 680px*/
+    ul.topnav li.dropdownIcon {			/*drop down Icon from 'topnav' list is selected*/
+        display: block;			/*its display is block*/
+        float: right;			/*it should be printed on rigth side of screen*/
+    }			/*the media query says that dropdownIcon's should be appearing on right of navbar when the screen width is below 680px*/
+}
+
+ul.topnav.responsive li.dropdownIcon {
+    position: absolute;			/*the dropdownIcon should be stay on its position*/
+    top: 0;			/*at the 0th postion of top*/
+    right: 0;			/*at the 0th postion of corner which is top-right corner*/
+}			/*this styling is used to make the dropdownIcon stay on its position when the dropdownList is opened in our mobile view*/
+
+ul.topnav.responsive {
+    position: relative;			/*i don't know whats the use,why its given(it shouldn't move he says)*/
+    margin: 3.7%;
+}
+
+ul.topnav.responsive li {
+    display: inline;			/*i don't know whats the use,why its given(it should stay together in a line he says)*/
+    float: none;			/*the list shouldn't be floating up on top of screen(like in PC view) it should be in dropdownList view*/
+    /*padding: 5px;*/
+    align-items: center;
+}
+
+ul.topnav.responsive li a {
+    display: block;			/*the anchor text should be displayed*/
+    text-align: center;			/*every anchor text should be aligned in center of its division*/
+    font-size: 21px;
+    padding: 25px 0px 0px 0px;
+}
+
+@media screen and (max-width: 980px) {
+    nav ul.topnav {
+        margin: 4%;
+    }
+
+    ul.topnav li.dropdownIcon a {
+        background-color: #645cff;
+        color: #fff;
+        font-size: 23px;
+        padding : 4px 13px 6px 13px;
+        border-radius: 4px;
+    }
+
+    ul.topnav li button {
+        margin-top: 0px;
+        float: none;
+        font-size: 21px;
+    }
+}
+
+/*################# hero-area ####################*/
+
+@media only screen and (min-width: 768px) {
+    .hero-text h1 {
+      font-size: 4rem;
+      margin-bottom: 0;
+    }
+}
+
+/*################# grid-area ####################*/
+
+@media screen and (min-width: 576px) {
+    .recipes-list {
+      grid-template-columns: 1fr 1fr;
+    }
+    .recipe-img {
+      height: 10rem;
+    }
+}
+  
+@media screen and (min-width: 992px) {
+    .recipes-container {
+      grid-template-columns: 200px 1fr;
+      gap: 1rem;
+    }
+
+    .recipes-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .recipe p {
+      font-size: 0.85rem;
+    }
+    
+    .tags-container {
+      order: 0;
+      /* background: blue; */
+    }
+    
+    .tags-list {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+}
+  
+@media screen and (min-width: 1200px) {
+    .recipe h5 {
+      font-size: 1.15rem;
+    }
+
+    .recipes-list {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/*################# slider-area ####################*/
+
+@media (max-width: 1349px) and (min-width: 1001px) {
+    #slider {
+        margin: 0% 5%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    div.chef {
+        padding: 1% 1%;
+    }
+
+    #slider {
+        width: 100%;
+        height: 100%;
+        margin: 0%;
+    }
+
+    #slider figure a img {
+        width: 20%;
+        height: 20%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    div.chef {
+        display: none;
+    }
+}
+
+/*################# tags ####################*/
+
+@media only screen and (max-width: 768px) {
+    div.col-2 {
+        width: 33.33%;
+    }
+}
