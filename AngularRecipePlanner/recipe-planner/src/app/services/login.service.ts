@@ -13,7 +13,7 @@ export class LoginService {
   constructor(private _httpService: HttpClient, private endpoints: EndpointsService) { }
 
   login(user:User): Observable<any>{
-    let body = JSON.parse(JSON.stringify(user));
+    let body = JSON.stringify(user);
     console.log(body);
 
     return this._httpService.post(this.endpoints.LOGIN_USER, body)

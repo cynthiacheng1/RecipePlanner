@@ -16,8 +16,8 @@ export class RecipeService {
 
   constructor(private _httpService: HttpClient, private endpoints: EndpointsService) { }
 
-  getRecipesSearchBy(ingredient: string, tag: string): Observable<any>{
-    return this._httpService.get(this.endpoints.SEARCH_RECIPE_BY + '/' + ingredient + '/' + tag);
+  getRecipesSearchBy(tag: string): Observable<any>{
+    return this._httpService.get(this.endpoints.SEARCH_RECIPE_BY + '/' + tag);
   }
 
   getRecipesById(id: number): Observable<any>{

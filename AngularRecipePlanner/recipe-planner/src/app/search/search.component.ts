@@ -67,22 +67,12 @@ export class SearchComponent implements OnInit {
 
     localStorage.setItem("recipe", recipe.id.toString());
     this.router.navigate(['/recipe'])
-    
+
   }
 
   getAllFilteredRecipes(){
 
-    var ingredient = "";
-    var tag = "";
-
-    if (this.ingredient != null){
-      ingredient = this.ingredient;
-    }
-    if (this.tag != null){
-      tag = this.tag;
-    }
-
-    this._recipeService.getRecipesSearchBy(ingredient, tag).pipe(catchError(this.handleError)).subscribe((recipes) => { 
+    this._recipeService.getRecipesSearchBy(this.tag).pipe(catchError(this.handleError)).subscribe((recipes) => { 
       this.recipes = recipes;
       location.reload();
     }

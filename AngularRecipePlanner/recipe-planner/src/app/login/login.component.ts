@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   login(){
     console.log(this.user);
     this._loginService.login(this.user).pipe(catchError(this.handleError)).subscribe((tokenData) => {
+      console.log(tokenData);
       this.loginAuth(tokenData);
     }
     ),
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
     this.parsedToken = JSON.parse(tokenData);
 
     try{
-
+      console.log(this.parsedToken);
       this.user.token = this.parsedToken.token;
       this.toastr.success("Logged in successfully")
       this._contextService.store(this.user);
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleError(error: any){
+    console.log(error);
     this.toastr.error("Login failed")
     return throwError("error");
   }
