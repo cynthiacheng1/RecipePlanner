@@ -16,31 +16,16 @@
               My Account
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/addrecipe">My Recipes</a>
+              <a class="dropdown-item" href="/addrecipe">Add Recipe</a>
               <a class="dropdown-item" href="/profile">My Profile</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/settings">Settings</a>
+              <a class="dropdown-item" href="/settings">My Recipes</a>
             </div>
           </li>
          
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
         <li class="topnav-right"><a class="reg" href="./join.html"><button type="button">Join</button></a></li><!--signup anchor text is at right of navbar-->
         <!--<li class="topnav-right"><a href="E:\My Projects\signup.html">Sign Up</a></li><!--signin anchor text is at right of navbar-->
         <li class="dropdownIcon"><a href="javascript:void(0);" onclick="dropdownMenu()">&#9776;</a></li>
     </ul>
    
 </nav>
-<script>
-     function dropdownMenu(){/*this is function in javascript, function's name 'dropdownMenu'*/
-			var x = document.getElementById("dropdownClick");/*var x assigned id 'dropdownClick' & document is used get our html file*/
-			if(x.className === "topnav"){/*if condition is to check whether the id which x is holding has class with name 'topnav'*/
-		    	x.className += " responsive"/*if yes then it should be appended with responsive i.e. topnav.responsive*/
-			}
-			else{
-				x.className = "topnav"		/*else classname should be assigned 'topnav'*/
-			}		/*in this function we are checking whether screen is in mobile view,if yes then we are appending 'topnav' class to*/
-		}	
-</script>
