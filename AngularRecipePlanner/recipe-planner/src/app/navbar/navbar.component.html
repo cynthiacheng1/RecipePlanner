@@ -6,21 +6,25 @@
   <nav class="navbar">
     <ul class="topnav" id="dropdownClick"><!--unordered list has a 'topnav'class & 'dropdownClick'id to interact with javascript-->
         <li><img src="./assets/main-logo.jpg" alt="Recipe Hub" height="45px"></li><!--1st list item is 'logo'-->
-        <li><a href="./home">Home</a></li><!--2nd list item is 'home'-->
-        <li><a href="./about">About</a></li><!--4th list item is 'about'-->
+        <li><a routerLink="./home">Home</a></li><!--2nd list item is 'home'-->
+        <li><a routerLink="./about">About</a></li><!--4th list item is 'about'-->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               My Account
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/addrecipe">Add Recipe</a>
+              <a class="dropdown-item" routerLink="/addrecipe">Add Recipe</a>
            
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/pantry">My Pantry</a>
+              <a class="dropdown-item" routerLink="/pantry">My Pantry</a>
             </div>
           </li>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Recipe" aria-label="Search">
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+          </form>
          
-        <li class="topnav-right"><a class="reg" href="./join.html"><button type="button">Join</button></a></li><!--signup anchor text is at right of navbar-->
+        <li class="topnav-right"><a class="reg" routerLink="/register"><button type="button">Join</button></a></li><!--signup anchor text is at right of navbar-->
         <!--<li class="topnav-right"><a href="E:\My Projects\signup.html">Sign Up</a></li><!--signin anchor text is at right of navbar-->
         <li class="dropdownIcon"><a href="javascript:void(0);" onclick="dropdownMenu()">&#9776;</a></li>
     </ul>
