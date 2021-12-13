@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr'
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators'
 import { throwError } from 'rxjs';
+import { RecipeComponent } from '../recipe/recipe.component';
 
 @Component({
   selector: 'app-search',
@@ -63,7 +64,10 @@ export class SearchComponent implements OnInit {
   }
 
   clickedRecipe(recipe: Recipe){
-//TODO
+
+    localStorage.setItem("recipe", recipe.id.toString());
+    this.router.navigate(['/recipe'])
+    
   }
 
   getAllFilteredRecipes(){

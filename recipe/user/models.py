@@ -4,7 +4,7 @@ from recipes.models import Recipe
 
 class User(models.Model):
     name = models.CharField(max_length = 500)
-    email = models.CharField(max_length = 500)
+    email = models.CharField(max_length = 500, unique = True)
     password = models.CharField(max_length = 500)
     favRecipes = ArrayField(
         models.IntegerField()

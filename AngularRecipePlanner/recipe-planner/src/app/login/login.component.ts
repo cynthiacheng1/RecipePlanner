@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this._loginService.login(this.user).pipe(catchError(this.handleError)).subscribe((tokenData) => { this.loginAuth(tokenData);
+    console.log(this.user);
+    this._loginService.login(this.user).pipe(catchError(this.handleError)).subscribe((tokenData) => {
+      this.loginAuth(tokenData);
     }
     ),
     (err: Error) => {
@@ -42,7 +44,7 @@ export class LoginComponent implements OnInit {
       this.user.token = this.parsedToken.token;
       this.toastr.success("Logged in successfully")
       this._contextService.store(this.user);
-      this.router.navigateByUrl('userHome')
+      this.router.navigateByUrl('home')
 
     } catch(error: any){
 
