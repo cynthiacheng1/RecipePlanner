@@ -71,14 +71,13 @@ class ProfileView(View):
         except KeyError:
             return JsonResponse({'message':'INVALID_KEYS'}, status = 400)
 
-class PantryView(View):
+class AddPantryView(View):
     @login_decorator
-    def post(self,request):
+    def post(self,request,ingredient):
         try:
             if request.user != '':
+                ingredient = ingredient.replace('_',' ')
                 pantry = Pantry.objects.get(user_id = request.user.id)
-                data = json.loads(request.body)
-                ingredient = data['ingredient']
                 if Ingredient.objects.filter(name = ingredient).exists():
                     ing_id = Ingredient.objects.get(name = ingredient).id
                     if pantry.ingredients[ing_id - 1] == 0:
@@ -91,7 +90,8 @@ class PantryView(View):
                 return JsonResponse({'message':'INVALID_USER'}, status=400)
         except:
             return JsonResponse({'message':'INVALID_KEYS'}, status=400)
-    
+
+class GetPantryView(View):
     @login_decorator
     def get(self,request):
         try:
@@ -109,12 +109,11 @@ class PantryView(View):
 
 class PantryDeleteView(View):
     @login_decorator
-    def post(self,request):
+    def post(self,request,ingredient):
         try:
             if request.user != '':
+                ingredient = ingredient.replace('_',' ')
                 pantry = Pantry.objects.get(user_id = request.user.id)
-                data = json.loads(request.body)
-                ingredient = data['ingredient']
                 if Ingredient.objects.filter(name = ingredient).exists():
                     ing_id = Ingredient.objects.get(name = ingredient).id
                     if pantry.ingredients[ing_id - 1] == 1:
