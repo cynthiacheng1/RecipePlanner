@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
-import { Recipe } from '../models/recipe.model';
+import { Recipe2 } from '../models/recipe2.model';
 import { LoginService } from '../services/login.service';
 import { RecipeService } from '../services/recipe.service';
 import { ContextService } from '../services/context.service';
@@ -16,7 +16,7 @@ import { throwError } from 'rxjs';
 })
 export class AddrecipeComponent implements OnInit {
 
-  recipe = new Recipe();
+  recipe = new Recipe2();
   user = new User();
   statusMessage: string;
   
@@ -36,14 +36,15 @@ export class AddrecipeComponent implements OnInit {
       return false;
     }
 
-    getFavorites(){
+    addRecipe(){
+
       this._recipeService.AddRecipe(this.user, this.recipe).pipe(catchError(this.handleError)).subscribe((recipes) => { 
         this.toastr.success("Recipe Added!")
         location.reload();
       }
       ),
       (err: Error) => {
-        this.statusMessage = "Favorite Recipes Error";
+        this.statusMessage = "Add Recipe Error";
         console.log(this.statusMessage, err)
       }
     }

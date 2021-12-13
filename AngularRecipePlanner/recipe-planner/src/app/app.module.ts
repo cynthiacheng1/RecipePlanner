@@ -18,7 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { HomepageComponent } from './homepage/homepage.component'; 
 import { FooterComponent } from './footer/footer.component';
-import { RecipeComponent } from './recipe/recipe.component'; 
+import { RecipeComponent } from './recipe/recipe.component';
+import { BananapancakesComponent } from './bananapancakes/bananapancakes.component';
+import { VegetablesoupComponent } from './vegetablesoup/vegetablesoup.component'; 
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { RecipeComponent } from './recipe/recipe.component';
     RecipePageComponent,
     HomepageComponent,
     FooterComponent,
-    RecipeComponent
+    RecipeComponent,
+    BananapancakesComponent,
+    VegetablesoupComponent
   ],
   imports: [
     BrowserModule,

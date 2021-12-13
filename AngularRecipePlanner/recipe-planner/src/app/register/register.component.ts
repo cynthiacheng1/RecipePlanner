@@ -27,10 +27,13 @@ export class RegisterComponent implements OnInit {
 
     if (this.user.password != this.secondpassword){
       this.same = false;
-      console.log("False")
+      console.log("passwords don't match")
     }
     else{
-      this._loginService.register(this.user).subscribe((response) => { this.registerAuth(response);
+
+      console.log(this.user);
+
+      this._loginService.register(this.user).subscribe((userData) => { this.registerAuth(userData);
       }),
       (err: Error) => {
         this.statusMessage = "Login Error";
@@ -39,12 +42,14 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  registerAuth(response: any){
-    if (response.status == 200) {
+  registerAuth(userData: User){
+
+    if (userData != null){
       this._contextService.store(this.user);
-      this.router.navigateByUrl('userHome')
+      this.router.navigateByUrl('home')
       console.log("registration successful")
-    } else {
+    } 
+    else {
       this.reset();
     }    
   }
@@ -52,5 +57,4 @@ export class RegisterComponent implements OnInit {
   private reset(){
     this.user = new User();
   }
-
 }
