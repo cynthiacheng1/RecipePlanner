@@ -9,6 +9,7 @@ from django.shortcuts import render
 
 from .models import User
 from django.conf import settings
+from .utils import login_decorator
 
 class SignUpView(View):
     def post(self,request):
@@ -21,7 +22,12 @@ class SignUpView(View):
                 email = data['email'],
                 password = crypted
             )
-            return HttpResponse(status = 200)
+            res_object = {
+                "name" : data['name'],
+                "email" : data['email'],
+                "password" : data['password']
+            }
+            return JsonResponse(res_object,status = 200)
         except KeyError:
             return JsonResponse({'message':'INVALID_KEYS'},status = 400)
         
@@ -43,3 +49,19 @@ class SignInView(View):
                 return JsonResponse({'message':'INVALID_USER'}, status = 401)
         except KeyError:
             return JsonResponse({'message':'INVALID_KEYS'}, status = 400)
+
+class ProfileView(View):
+    @login_decorator
+    def get(self,request):
+        try:
+            if request.user != '':
+                user = User.objects.get(id = request.user.id)
+                res_object = {
+                    "name" : user.name,
+                    "email" : user.email,
+                    "favRecipes" : user.favRecipes
+                }
+            return JsonResponse(res_object, status = 200)
+        except KeyError:
+            return JsonResponse({'message':'INVALID_KEYS'}, status = 400)
+        
