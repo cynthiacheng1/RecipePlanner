@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
+//import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { AddrecipeComponent } from './addrecipe/addrecipe.component';
 import { PantryComponent } from './pantry/pantry.component';
@@ -15,7 +16,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RecipePageComponent } from './recipe-page/recipe-page.component'; 
+import { RecipePageComponent } from './recipe-page/recipe-page.component';
+import { HomepageComponent } from './homepage/homepage.component'; 
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { RecipePageComponent } from './recipe-page/recipe-page.component';
     SearchComponent,
     ListComponent,
     ProfileComponent,
-    RecipePageComponent
+    RecipePageComponent,
+    HomepageComponent,
+   // HomeComponent
   ],
   imports: [
     BrowserModule,
