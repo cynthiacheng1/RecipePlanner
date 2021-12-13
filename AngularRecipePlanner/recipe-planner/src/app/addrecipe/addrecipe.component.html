@@ -4,30 +4,44 @@
     <form>
         <div class="form-group">
           <label >Recipe Name</label>
-          <input type="email" class="form-control" id="recipeName" placeholder="Recipe Name">
+          <input type="email" class="form-control" id="recipeName" placeholder="Recipe Name" [(ngModel)]="recipe.name" name = "name">
         </div>
 
         <div class="form-group">
           <label >Health Info</label>
-          <input type="email" class="form-control" id="recipeName" placeholder="Calories: 338kcal | Carbohydrates: 1g | Protein: 40g">
+          <input type="email" class="form-control" id="recipeName" placeholder="Calories: 338kcal | Carbohydrates: 1g | Protein: 40g" [(ngModel)]="recipe.link" name = "link">
         </div>
       
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Recipe Instructions</label>
-            <textarea class="form-control" id="recipeDescription" rows="3"></textarea>
+            <textarea class="form-control" id="recipeDescription" rows="3" [(ngModel)]="recipe.instructions" name = "instructions" ></textarea>
           </div>
           <div class="form-group">
             <label >Tags</label>
-            <input type="email" class="form-control" id="recipeName" placeholder="Cheesey, Italian, Dinner">
+            <input type="text" class="form-control" id="recipeName" placeholder="Cheesey, Italian, Dinner" [(ngModel)]="recipe.tags" name = "tags">
             <small>Separate by commas</small>
           </div>
           <div class="form-group">
+            <label >link</label>
+            <input type="text" class="form-control" id="recipeName" placeholder="google.com" [(ngModel)]="recipe.info" name = "info">
+            <small>Separate by commas</small>
+          </div>
+
+          <!-- <div class="form-group">
             <label for="exampleFormControlFile1">Example file input</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1">
-          </div>
-       
+          </div> -->
 
-<div class="dropdown">
+          <div class="form-group">
+            <label>Ingredients</label>
+            <input type="text" class="form-control" id="recipeName" placeholder="apple, olive oil">
+            <small>Separate by commas</small>
+          </div>
+          <div>
+          <button type="submit" class="btn btn-primary btn-lg" (click)="addRecipe()">Submit</button>
+        </div>
+
+<!-- <div class="dropdown">
   <label for="exampleFormControlFile1">Ingredients</label><br>
   <button class="btn btn-default dropdown-toggle" type="button" 
           id="dropdownMenu1" data-toggle="dropdown" 
@@ -37,8 +51,9 @@
     <i class="glyphicon glyphicon-tags" style="margin-right: 5px;"> </i></div>
    
 
-  </button>
-  <ul class="dropdown-menu checkbox-menu allow-focus row" aria-labelledby="dropdownMenu1">
+  </button> -->
+
+  <!-- <ul class="dropdown-menu checkbox-menu allow-focus row" aria-labelledby="dropdownMenu1" [(ngModel)]="recipe.ingredients_list" name = "email">
     <li class='col-sm-2'>
       <label>
         <input type="checkbox"> Apple
@@ -286,10 +301,12 @@
     </li>
    
     
-  </ul>
-    <br><br>   
-    <button type="submit" class="btn btn-primary btn-lg" (click)="addRecipe()">Submit</button>
-</div>
+  </ul> -->
+    <!-- <br><br>   
+    
+</div> -->
+
+
 
           <br>
        

@@ -38,14 +38,11 @@ export class LoginComponent implements OnInit {
   }
 
   loginAuth(tokenData: string){
-    this.parsedToken = JSON.parse(tokenData);
-
     try{
-      console.log(this.parsedToken);
-      this.user.token = this.parsedToken.token;
-      this.toastr.success("Logged in successfully")
+      this.user.token = tokenData;
       this._contextService.store(this.user);
       this.router.navigateByUrl('home')
+      this.toastr.success("Logged in successfully")
 
     } catch(error: any){
 

@@ -18,15 +18,15 @@ export class RecipeService {
   constructor(private _httpService: HttpClient, private endpoints: EndpointsService) { }
 
   getRecipesSearchBy(tag: string): Observable<any>{
-    return this._httpService.get(this.endpoints.SEARCH_RECIPE_BY + '/' + tag);
+    return this._httpService.get(this.endpoints.RECIPE + '?tag=' + tag);
   }
 
   getRecipesById(id: number): Observable<any>{
-    return this._httpService.get(this.endpoints.SEARCH_RECIPE_ID + '/' + id);
+    return this._httpService.get(this.endpoints.RECIPE + '?id=' + id);
   }
 
   getAllRecipes(): Observable<any>{
-    return this._httpService.get(this.endpoints.GET_RECIPES);
+    return this._httpService.get(this.endpoints.RECIPE);
   }
 
   getFavorites(user: User): Observable<any>{
@@ -46,8 +46,7 @@ export class RecipeService {
   }
 
   AddRecipe(user: User, recipe: Recipe2): Observable<any>{
-
-    return this._httpService.put(this.endpoints.ADD_RECIPE + '/' + user.email, recipe, {headers: new HttpHeaders({'Authorization' : user.token})});
+    return this._httpService.put(this.endpoints.RECIPE, recipe, {headers: new HttpHeaders({'Authorization' : user.token})});
   }
 
   AddPantryIngredient(user: User, ingredient: string): Observable<any>{

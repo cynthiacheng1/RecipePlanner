@@ -42,6 +42,7 @@ export class RecipeComponent implements OnInit {
   getRecipe(recipeId: number){
     this._recipeService.getRecipesById(recipeId).pipe(catchError(this.handleError)).subscribe((recipe) => { 
       this.recipe = recipe;
+      console.log(this.recipe);
     }
     ),
     (err: Error) => {

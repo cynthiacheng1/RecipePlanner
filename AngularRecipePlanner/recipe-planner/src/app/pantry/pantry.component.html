@@ -4,11 +4,29 @@
 </head>
 
 <!-- Should be able to see their pantry and add or remove items from pantry. -->
-<div class="card" style="width: 18rem;">
+<!-- <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="/assets/recipes/recipe-3.jpeg" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">Vegetable Soup</h5>
       
       <a routerLink="/vegetablesoup" class="btn btn-primary">See Recipe</a>
     </div>
-  </div>
+  </div> -->
+
+  <div class="recipes-list-iterate" *ngFor = "let i of ingredients">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{i}}</h5>
+        </div>
+      </div>
+    </div>
+
+  <form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Ingredient</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Ingredient" [(ngModel)]="ingredient" name = "ingredient">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addIngredient()">Add Ingredient</button>
+    <button type="submit" class="btn btn-primary" (click)="removeIngredient()" style = "margin-left: 5px;">Remove Ingredient</button>
+    </form>

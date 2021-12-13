@@ -47,6 +47,7 @@ export class RegisterComponent implements OnInit {
     if (userData != null){
       this._contextService.store(this.user);
       this.router.navigateByUrl('home')
+      this.toastr.success("Registration Successful")
       console.log("registration successful")
     } 
     else {

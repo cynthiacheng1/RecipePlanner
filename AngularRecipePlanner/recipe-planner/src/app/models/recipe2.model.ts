@@ -7,8 +7,8 @@ export class Recipe2 {
     instructions: string;
     link: string;
     info: string;
-    tags: string[];
-    ingredients_list: Array<string>;
+    tags: string;
+    ingredients_list: string;
 
     constructor(){}
 

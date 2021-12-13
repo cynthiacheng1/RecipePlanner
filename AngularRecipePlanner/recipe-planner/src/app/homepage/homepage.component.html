@@ -20,28 +20,29 @@
             <div class="tags-container">
               <h5>Tags</h5>
               <div class="tags-list">
-                <a href="tag-tasty.html">Tasty</a>
-                <a href="tag-breakfast.html">Healthy</a>
-                <a href="tag-healthy.html">Breakfast</a>
-               
+                <button class="btn btn-info ml-2 mr-2" (click)="italian()" >Italian</button>
+                <button class="btn btn-info ml-2 mr-2" (click)="healthy()" style = "margin-top: 5px;">Healthy</button>
+                <button class="btn btn-info ml-2 mr-2" (click)="vegetarian()" style = "margin-top: 5px;">Vegetarian</button>
+                <button class="btn btn-info ml-2 mr-2" (click)="all()" style = "margin-top: 5px;">All Recipes</button>
+                <button class="btn btn-info ml-2 mr-2" (click)="getAllPantryRecipes()" style = "margin-top: 5px;" *ngIf = "ifLogged()">Pantry Recipes</button>
               </div>
             </div>
             <!-- end of tag container -->
             
             <!-- recipes list -->
-            <div class="recipes-list">
+
+              <div class="recipes-list-iterate" *ngFor = "let i of recipes">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./assets/recipes/recipe-4.jpeg" alt="Card image cap">
+                    <img class="card-img-top" src="{{i.info}}" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Banana Pancakes</h5>
-                    
-                      <a routerLink="/bananapancakes" class="btn btn-primary">See Recipe</a>
+                      <h5 class="card-title">{{i.name}}</h5>
+                      <p>{{i.tags}}</p>
+                      <a class="btn btn-primary" (click)="clickedRecipe(i)">See Recipe</a>
                     </div>
                   </div>
-              <!-- single recipe -->
-              
+                </div>
               <!-- end of single recipe -->
-            </div>
+            
             <!-- end of recipes list -->
         </section>
         <!--grid-->

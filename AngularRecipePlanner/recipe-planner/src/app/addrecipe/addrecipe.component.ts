@@ -37,7 +37,7 @@ export class AddrecipeComponent implements OnInit {
     }
 
     addRecipe(){
-
+      console.log(this.recipe)
       this._recipeService.AddRecipe(this.user, this.recipe).pipe(catchError(this.handleError)).subscribe((recipes) => { 
         this.toastr.success("Recipe Added!")
         location.reload();

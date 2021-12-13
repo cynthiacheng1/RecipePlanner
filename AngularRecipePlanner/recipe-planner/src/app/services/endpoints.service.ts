@@ -16,14 +16,17 @@ export class EndpointsService {
   public readonly LOGIN_USER: string = this.authURL + 'user/signin';
   // get user info
   public readonly GET_USER_INFO: string = this.authURL + 'user/info';
+  // Recipe
+  public readonly RECIPE: string = this.authURL + 'recipe'
+
   // Search by ingredient and tag
-  public readonly SEARCH_RECIPE_BY: string = this.authURL + 'recipe/searchby';
+  // public readonly SEARCH_RECIPE_BY: string = this.authURL + 'recipe/searchby';
   // Get one recipe by id
-  public readonly SEARCH_RECIPE_ID: string = this.authURL + 'recipe/searchid';
+  // public readonly SEARCH_RECIPE_ID: string = this.authURL + 'recipe/searchid';
   // Get all recipes
-  public readonly GET_RECIPES: string = this.authURL + 'recipe/getall';
+  // public readonly GET_RECIPES: string = this.authURL + 'recipe/getall';
   // Add recipe
-  public readonly ADD_RECIPE: string = this.authURL + 'recipe/add';
+  // public readonly ADD_RECIPE: string = this.authURL + 'recipe/add';
   // Add ingredient from pantry
   public readonly ADD_PANTRY: string = this.authURL + 'pantry/add';
   // Remove ingredient from pantry

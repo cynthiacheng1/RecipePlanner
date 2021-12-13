@@ -1,2 +1,51 @@
-<p>recipe works!</p>
  <!-- This page to show one recipe after user clicks on it from recipe search page -->
+
+ <main class="page">
+    <div class="recipe-page">
+      <section class="recipe-hero">
+        <img
+          src="{{recipe.info}}"
+          class="img recipe-hero-img" style="height:400px; width: 400px; margin-left:auto; margin-right: auto;"
+        />
+        <article class="recipe-info">
+          <h2>{{recipe.name}}</h2>
+      
+            <article>
+              <i class="fas fa-clock"></i>
+              <h3>Health Info</h3>
+              <p>{{recipe.link}}</p>
+            </article>
+           
+          <p class="recipe-tags">
+            Tags : <a *ngFor = "let i of recipe.tags">{{i}}</a>
+            
+          </p>
+        </article>
+      </section>
+      <!-- content -->
+      <section class="recipe-content">
+        <article>
+          <h4>instructions</h4>
+          <!-- single instruction -->
+          <div class="single-instruction">
+            <header>
+              <div></div>
+            </header>
+            <p>
+              {{recipe.instructions}}
+            </p>
+          </div>
+          <!-- end of single instruction -->
+      
+        </article>
+        <article class="second-column">
+          <div>
+            <h4>ingredients</h4>
+            
+            <p class="single-ingredient">{{recipe.ingredients}}</p>
+          </div>
+       
+        </article>
+      </section>
+    </div>
+  </main>

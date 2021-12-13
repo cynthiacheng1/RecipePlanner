@@ -26,6 +26,7 @@ export class PantryComponent implements OnInit {
 
   ngOnInit(): void {
     this.user.email = this._contextService.getEmail();
+    this.getPantryIngredients();
   }
 
   getPantryIngredients(){
