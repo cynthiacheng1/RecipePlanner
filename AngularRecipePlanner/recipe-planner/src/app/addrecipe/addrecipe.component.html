@@ -19,6 +19,7 @@
           <div class="form-group">
             <label >Tags</label>
             <input type="email" class="form-control" id="recipeName" placeholder="Cheesey, Italian, Dinner">
+            <small>Separate by commas</small>
           </div>
           <div class="form-group">
             <label for="exampleFormControlFile1">Example file input</label>
@@ -27,7 +28,7 @@
        
 
 <div class="dropdown">
-  <label for="exampleFormControlFile1">Ingredient Tags</label><br>
+  <label for="exampleFormControlFile1">Ingredients</label><br>
   <button class="btn btn-default dropdown-toggle" type="button" 
           id="dropdownMenu1" data-toggle="dropdown" 
           aria-haspopup="true" aria-expanded="true">
@@ -287,11 +288,11 @@
     
   </ul>
     <br><br>   
-  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    <button type="submit" class="btn btn-primary btn-lg" (click)="addRecipe()">Submit</button>
 </div>
 
           <br>
-        <button type="submit" class="btn btn-primary btn-lg" (click)="addRecipe()">Submit</button>
+       
       </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

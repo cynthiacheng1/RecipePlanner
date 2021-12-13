@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/*#################default####################*/
+
+* {
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    font-family: 'Fira Sans',sans-serif;
+}
+
+body,head {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+div.main {
+    padding: 0% 9%;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+div.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+div.row::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+/*################# nav bar ####################*/
+
+nav {
+    margin: 10px 0 50px 0;			/*the nav bar shouldn't have gap between screen & it*/
+    width: 100%;		/*the width of nav should be using 100% any screen(mobile/desktop)*/
+}
+
+nav ul {
+    /*font-family: 'Roboto', sans-serif;*/			/* font selecting from google fonts*/
+    background-color: #fff;			/*nav bar color*/
+    overflow: hidden;			/*if some elements are unable to fit in mobile screen then it should be hidden*/
+    margin: 2% 0 0 0;			/*the nav bar's unordered list shouldn't have gap between screen & it*/
+    padding: 0;			/*the nav bar's unordered list shouldn't have gap between navbar & it*/
+}
+
+ul.topnav li {
+    list-style: none;		/*list design i.e. the preffix dotes/stars of list will not be shown*/
+    float: left;			/*will be printed on left of screen & (because of this list is horizontal)*/
+}
+
+ul.topnav li.topnav-right {
+    float: right;			/* list will be printed on right of screen & (because of this list is horizontal)*/
+}
+
+ul.topnav li img {
+    margin: 5px 25px 5px 0px;
+}
+
+ul.topnav li a {
+    display: block;				/*i don't know what it does?*/
+    text-decoration: none;			/* no overline/underline on text*/
+    min-height: 16px;			/*minimum height of navbar should be 16px on screen*/
+    text-align: center;			/*it should be aligned center of its division*/
+    padding: 20px 14px 13px 14px;			/*gap between text & border should be 14px*/
+    /*text-transform: uppercase;			/*text should be in uppercase*/
+    color: #000;			/*the color of anchortext in navbar*/
+    font-weight: 500;
+    font-size: 17px;
+}
+
+ul.topnav li a.reg {
+    padding: 0px;
+}
+
+ul.topnav li button{
+    background-color: #645cff;
+    color: #fff;
+    margin-top: 7px;
+    padding: 7px 20px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: progress;
+    font-weight: 500;
+}
+
+ul.topnav li button:hover {
+    background-color: #504acc;
+}
+
+ul.topnav li a:hover {			/*the (:) symbol is used to assign action on element (:hover) hover effect is assigned*/
+    /*background-color: #65a5ff;			/*when the effect is visible it should show this color for element background*/
+    color: #645cff;			/*when the effect is visible it should show this color for text*/
+}
+
+ul.topnav li.dropdownIcon {			/*the drop down icon is added but it will not be shown in desktop view*/
+    display: none;			/*the display of drop down icon is none*/
+}
+
+/*################# recipe page ####################*/
+
+.recipe-hero {
+    display: grid;
+    gap: 3rem;
+}
+
+.recipe-hero-img {
+    height: 300px;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.recipe-info {
+    margin-top: 10%;
+}
+
+.recipe-info h2 {
+    font-family: 'Roboto',sans-serif;
+    font-size: 39.056px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    line-height: 50px;
+    margin-bottom: 22px;
+}
+
+.recipe-info p {
+    color: #475569;
+    font-family: 'Nunito',sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    line-height: 27px;
+    margin-bottom: 24px;
+}
+
+.recipe-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.recipe-icons i {
+    font-size: 1.5rem;
+    color: #645cff;
+}
+
+.recipe-icons h5 {
+    margin: 2px 0 0 0;
+    font-size: 0.85em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: #0f172a;
+}
+
+.recipe-icons p {
+    margin-bottom: 0;
+    font-size: 0.85em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: #475569;
+}
+
+p.recipe-tags {
+    font-size: 11.2px;
+    font-family: 'Nunito',sans-serif;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-weight: 600;
+}
+  
+.recipe-tags a {
+    font-size: 11.2px;
+    font-family: 'Nunito',sans-serif;
+    background: #645cff;
+    border-radius: 4px;
+    color: #fff;
+    padding: 0.05rem 0.5rem;
+    margin: 0 0.25rem;
+    line-height: 20px;
+    text-transform: capitalize;
+}
+
+.recipe-content h4 {
+    font-size: 25px;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 100;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-bottom: 22.08px;
+}
+
+.single-instruction header {
+    line-height: 28px;
+    font-family: 'Nunito',sans-serif;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    
+}
+.single-instruction p {
+    font-size: 15px;
+}
+.single-instruction header p {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #645cff;
+    margin-bottom: 0;
+}
+
+  
+.second-column {
+    display: grid;
+    row-gap: 2rem;
+   
+}
+
+.second-column p {
+    line-height: 28px;
+    font-family: 'Nunito',sans-serif;
+    margin-bottom: 24px;
+    font-size: 15px;
+}
+
+.single-ingredient {
+    border-bottom: 2px solid #cbd5e1;
+    padding-bottom: 0.75rem;
+    color: var(--grey-700);
+}
+
+.single-tool {
+    border-bottom: 2px solid #cbd5e1;
+    padding-bottom: 0.75rem;
+    color: #645cff;
+    text-transform: capitalize;
+}
+
+/*################# footer ###################*/
+
+.page-footer {
+    text-align: center;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: #fff;
+}
+
+.page-footer h5 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.page-footer p {
+    margin-bottom: 0;
+    font-weight: 200;
+}
+
+.page-footer .footer-logo,
+.page-footer a {
+    color: #645cff;
+    font-weight: 600;
+}
+
+.footer-logo,
+.page-footer a:hover {
+    color: #504acc;
+}
+
+/*################# Mobile ###################*/
+
+/*#################nav bar####################*/
+
+@media screen and (max-width: 980px) {			/*media query's condition is, if screen width is below 680px action should  be taken*/
+    ul.topnav li:not(:nth-child(1)) {			/*every list item except the first list item is selected*/
+        display: none;			/*except the 1st list item every list item*/
+    }			/*this media query says that every list item of list'topnav' except(:not) the first postioned(nth) child which is */
+            /*'home' shouldn't appear or its display should be 'none' when the screen width is below 680px*/
+    ul.topnav li.dropdownIcon {			/*drop down Icon from 'topnav' list is selected*/
+        display: block;			/*its display is block*/
+        float: right;			/*it should be printed on rigth side of screen*/
+    }			/*the media query says that dropdownIcon's should be appearing on right of navbar when the screen width is below 680px*/
+}
+
+ul.topnav.responsive li.dropdownIcon {
+    position: absolute;			/*the dropdownIcon should be stay on its position*/
+    top: 0;			/*at the 0th postion of top*/
+    right: 0;			/*at the 0th postion of corner which is top-right corner*/
+}			/*this styling is used to make the dropdownIcon stay on its position when the dropdownList is opened in our mobile view*/
+
+ul.topnav.responsive {
+    position: relative;			/*i don't know whats the use,why its given(it shouldn't move he says)*/
+    margin: 3.7%;
+}
+
+ul.topnav.responsive li {
+    display: inline;			/*i don't know whats the use,why its given(it should stay together in a line he says)*/
+    float: none;			/*the list shouldn't be floating up on top of screen(like in PC view) it should be in dropdownList view*/
+    /*padding: 5px;*/
+    align-items: center;
+}
+
+ul.topnav.responsive li a {
+    display: block;			/*the anchor text should be displayed*/
+    text-align: center;			/*every anchor text should be aligned in center of its division*/
+    font-size: 21px;
+    padding: 25px 0px 0px 0px;
+}
+
+@media screen and (max-width: 980px) {
+    nav ul.topnav {
+        margin: 4%;
+    }
+
+    ul.topnav li.dropdownIcon a {
+        background-color: #645cff;
+        color: #fff;
+        font-size: 23px;
+        padding : 4px 13px 6px 13px;
+        border-radius: 4px;
+    }
+
+    ul.topnav li button {
+        margin-top: 0px;
+        float: none;
+        font-size: 21px;
+    }
+}
+
+/*################# recipe page ####################*/
+
+@media screen and (min-width: 992px) {
+    .recipe-hero {
+      grid-template-columns: 4fr 5fr;
+      align-items: center;
+    }
+
+    .recipe-content {
+        padding: 3rem 0;
+        display: grid;
+        gap: 2rem 5rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .recipe-content {
+      grid-template-columns: 2fr 1fr;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .recipe-content {
+        padding: 48px 0px;
+    }
+} 
