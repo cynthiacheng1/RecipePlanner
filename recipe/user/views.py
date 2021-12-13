@@ -156,6 +156,59 @@ class PantryRecipeView(View):
         except:
             return JsonResponse({'message':'INVALID_KEYS'}, status=400)
 
-# class FavoriteRecipeView(View):
-#     @login_decorator
-#     def post(self,request):
+class FavoriteRecipeView(View):
+    @login_decorator
+    def post(self,request):
+        try:
+            if request.user != '':
+                data = json.loads(request.body)
+                recipe_id = data['recipe_id']
+                user = User.objects.get(id = request.user.id)
+                user.favRecipes.append(recipe_id)
+                user.save()
+                return HttpResponse(status=200)
+            else:
+                return JsonResponse({'message':'INVALID_USER'}, status=400)
+        except:
+            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
+    
+    @login_decorator
+    def delete(self,request):
+        try:
+            if request.user != '':
+                data = json.loads(request.body)
+                recipe_id = data['recipe_id']
+                user = User.objects.get(id = request.user.id)
+                user.favRecipes.remove(recipe_id)
+                user.save()
+                return HttpResponse(status=200)
+            else:
+                return JsonResponse({'message':'INVALID_USER'}, status=400)
+        except:
+            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
+    
+    @login_decorator
+    def get(self,request):
+        try:
+            if request.user != '':
+                favRecipes = User.objects.get(id = request.user.id).favRecipes
+                result = []
+                for id in favRecipes:
+                    recipe = Recipe.objects.get(id = id)
+                    obj = {
+                            'id': recipe.id,
+                            'name': recipe.name,
+                            'ingredients': recipe.ingredients,
+                            'cleaned_ingredients': recipe.cleaned_ingredients,
+                            'instructions': recipe.instructions,
+                            'info': recipe.info,
+                            'link': recipe.link,
+                            'tags': recipe.tags
+                        }
+                    result.append(obj)
+                return JsonResponse({'data':result},status=200)
+            else:
+                return JsonResponse({'message':'INVALID_USER'}, status=400)
+        except:
+            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
+
