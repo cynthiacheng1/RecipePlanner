@@ -7,7 +7,8 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 
 
-from .models import User
+from .models import User, Pantry
+from recipes.models import Recipe, Ingredient
 from django.conf import settings
 from .utils import login_decorator
 
@@ -17,10 +18,15 @@ class SignUpView(View):
             data = json.loads(request.body)
             password = bcrypt.hashpw(data['password'].encode('utf-8'),bcrypt.gensalt())
             crypted = password.decode('utf-8')
-            User.objects.create(
+            created_user = User.objects.create(
                 name = data['name'],
                 email = data['email'],
-                password = crypted
+                password = crypted,
+                favRecipes = []
+            )
+            Pantry.objects.create(
+                user = created_user,
+                ingredients = [0] * 52
             )
             res_object = {
                 "name" : data['name'],
@@ -64,4 +70,92 @@ class ProfileView(View):
             return JsonResponse(res_object, status = 200)
         except KeyError:
             return JsonResponse({'message':'INVALID_KEYS'}, status = 400)
-        
+
+class PantryView(View):
+    @login_decorator
+    def post(self,request):
+        try:
+            if request.user != '':
+                pantry = Pantry.objects.get(user_id = request.user.id)
+                data = json.loads(request.body)
+                ingredient = data['ingredient']
+                if Ingredient.objects.filter(name = ingredient).exists():
+                    ing_id = Ingredient.objects.get(name = ingredient).id
+                    if pantry.ingredients[ing_id - 1] == 0:
+                        pantry.ingredients[ing_id - 1] = 1
+                        pantry.save()
+                        return HttpResponse(status=200)
+                    else:
+                        return JsonResponse({'message':'DUPLICATE_ENTRIES'}, status=400)
+            else:
+                return JsonResponse({'message':'INVALID_USER'}, status=400)
+        except:
+            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
+    
+    @login_decorator
+    def delete(self,request):
+        try:
+            if request.user != '':
+                pantry = Pantry.objects.get(user_id = request.user.id)
+                data = json.loads(request.body)
+                ingredient = data['ingredient']
+                if Ingredient.objects.filter(name = ingredient).exists():
+                    ing_id = Ingredient.objects.get(name = ingredient).id
+                    if pantry.ingredients[ing_id - 1] == 1:
+                        pantry.ingredients[ing_id - 1] = 0
+                        pantry.save()
+                        return HttpResponse(status=200)
+                    else:
+                        return JsonResponse({'message':'NOT_EXISTS'}, status=400)
+            else:
+                return JsonResponse({'message':'INVALID_USER'}, status=400)
+        except:
+            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
+    
+    @login_decorator
+    def get(self,request):
+        try:
+            if request.user != '':
+                pantry = Pantry.objects.get(user_id = request.user.id)
+                result = []
+                for i in range(52):
+                    if pantry.ingredients[i]:
+                        result.append(Ingredient.objects.get(id=i+1).name)
+                return JsonResponse({'data':result},status=200)
+            else:
+                return JsonResponse({'message':'INVALID_USER'}, status=400)
+        except:
+            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
+    
+class PantryRecipeView(View):
+    @login_decorator
+    def get(self,request):
+        try:
+            if request.user != '':
+                pantry = Pantry.objects.get(user_id = request.user.id)
+                result = []
+                for recipe in Recipe.objects.all():
+                    for i in range(52):
+                        if recipe.cleaned_ingredients[i] and not pantry.ingredients[i]:
+                            break
+                    else:
+                        obj = {
+                            'id': recipe.id,
+                            'name': recipe.name,
+                            'ingredients': recipe.ingredients,
+                            'cleaned_ingredients': recipe.cleaned_ingredients,
+                            'instructions': recipe.instructions,
+                            'info': recipe.info,
+                            'link': recipe.link,
+                            'tags': recipe.tags
+                        }
+                        result.append(obj)
+                return JsonResponse({'data':result},status=200)
+            else:
+                return JsonResponse({'message':'INVALID_USER'}, status=400)
+        except:
+            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
+
+# class FavoriteRecipeView(View):
+#     @login_decorator
+#     def post(self,request):
