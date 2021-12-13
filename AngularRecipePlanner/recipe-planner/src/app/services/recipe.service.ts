@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EndpointsService } from './endpoints.service';
 import { Recipe } from '../models/recipe.model';
+import { Recipe2 } from '../models/recipe2.model';
 import { User } from '../models/user.model';
 
 const httpOptions = {
@@ -44,7 +45,8 @@ export class RecipeService {
     return this._httpService.get(this.endpoints.GET_PANTRY_RECIPES + '/' + user.email, {headers: new HttpHeaders({'Authorization' : user.token})});
   }
 
-  AddRecipe(user: User, recipe: Recipe): Observable<any>{
+  AddRecipe(user: User, recipe: Recipe2): Observable<any>{
+
     return this._httpService.put(this.endpoints.ADD_RECIPE + '/' + user.email, recipe, {headers: new HttpHeaders({'Authorization' : user.token})});
   }
 
