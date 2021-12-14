@@ -11,6 +11,7 @@ def login_decorator(func):
         SECRET_KEY = getattr(settings, "SECRET_KEY", None)
         try:
             access_token    = request.headers.get('Authorization',None)
+            print("access token!!!!!!!!!!!!",access_token)
             if access_token:
                 payload         = jwt.decode(access_token,SECRET_KEY,algorithm = 'HS256')
                 user            = User.objects.get( email = payload['email'])
