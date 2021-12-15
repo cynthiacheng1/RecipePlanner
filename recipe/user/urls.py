@@ -8,7 +8,7 @@ urlpatterns = [
     path('/addpantry', AddPantryView.as_view()),
     path('/pantry', GetPantryView.as_view()),
     path('/pantry-recipe', PantryRecipeView.as_view()),
-    path('/addfavorite/<int:recipe_id>', FavoriteRecipeView.as_view()),
+    path('/addfavorite', FavoriteRecipeView.as_view()),
     path('/pantry-delete', PantryDeleteView.as_view()),
     path('/favorite-delete',FavoriteDeleteView.as_view()),
     path('/favorite', FavoriteView.as_view())

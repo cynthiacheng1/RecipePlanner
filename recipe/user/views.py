@@ -164,6 +164,9 @@ class FavoriteRecipeView(View):
         try:
             if request.user != '':
                 user = User.objects.get(id = request.user.id)
+                data = json.loads(request.body)
+                print("data!!!!!",data)
+                recipe_id = data['id']
                 user.favRecipes.append(recipe_id)
                 user.save()
                 return HttpResponse(status=200)
