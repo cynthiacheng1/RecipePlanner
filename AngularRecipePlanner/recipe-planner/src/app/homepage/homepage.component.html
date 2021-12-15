@@ -30,10 +30,15 @@
             </div>
             <!-- end of tag container -->
             
+        
+              <!-- end of single recipe -->
+            
+            <!-- end of recipes list -->
+        </section>
             <!-- recipes list -->
-
-              <div class="recipes-list-iterate" *ngFor = "let i of recipes">
-                <div class="card" style="width: 18rem;">
+            <div class='recipe-listing'>
+              <div class="recipes-list-iterate" *ngFor = "let i of recipes" style="display: inline;">
+                <div class="card" style=" display:inline-block; ">
                     <img class="card-img-top" src="{{i.info}}" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">{{i.name}}</h5>
@@ -42,10 +47,7 @@
                     </div>
                   </div>
                 </div>
-              <!-- end of single recipe -->
-            
-            <!-- end of recipes list -->
-        </section>
+              </div>
         <!--grid-->
        
     <!--main-->

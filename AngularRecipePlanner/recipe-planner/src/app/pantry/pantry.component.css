@@ -1,3 +1,15 @@
 .card{
     margin:auto;
 }
+
+.recipes-list-iterate{
+    margin: 30px;
+}
+
+.form-group{
+    margin: 30px;
+}
+
+form {
+    padding-bottom: 30px;;
+}

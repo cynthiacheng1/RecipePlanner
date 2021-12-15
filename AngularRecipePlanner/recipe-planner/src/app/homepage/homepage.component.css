@@ -58,6 +58,12 @@ nav {
     width: 100%;		/*the width of nav should be using 100% any screen(mobile/desktop)*/
 }
 
+.card-img-top{
+    width: 18rem;
+    height: 30rem;
+    margin: 5px;
+}
+
 nav ul {
     /*font-family: 'Roboto', sans-serif;*/			/* font selecting from google fonts*/
     background-color: #fff;			/*nav bar color*/
@@ -249,14 +255,23 @@ h4.chef-header {
 /*################# grid-area ####################*/
 
 .recipes-container {
-    display: grid;
+    display: display;
     gap: 2rem 1rem;
+    width: 500px;
+    flex-direction: row;
 }
   
 .recipes-list {
-    display: grid;
+   
     gap: 2rem 1rem;
     padding-bottom: 3rem;
+}
+
+.recipe-listing{
+    flex-direction: row;
+    display: inline;
+    width: 500px;
+    background-color: red;
 }
   
 .tags-container {
@@ -476,10 +491,14 @@ ul.topnav.responsive li a {
       height: 10rem;
     }
 }
+
+.recipes-list-iterate{
+    display: inline;
+}
   
 @media screen and (min-width: 992px) {
     .recipes-container {
-      grid-template-columns: 200px 1fr;
+      
       gap: 1rem;
     }
 
@@ -493,6 +512,7 @@ ul.topnav.responsive li a {
     
     .tags-container {
       order: 0;
+      grid-template-columns: 1fr 1fr;
       /* background: blue; */
     }
     
@@ -500,8 +520,10 @@ ul.topnav.responsive li a {
       display: grid;
       grid-template-columns: 1fr;
     }
+
+   
 }
-  
+
 @media screen and (min-width: 1200px) {
     .recipe h5 {
       font-size: 1.15rem;
