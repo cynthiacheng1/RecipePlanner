@@ -110,10 +110,11 @@ class GetPantryView(View):
 
 class PantryDeleteView(View):
     @login_decorator
-    def post(self,request,ingredient):
+    def post(self,request):
         try:
             if request.user != '':
-                ingredient = ingredient.replace('_',' ')
+                data = json.loads(request.body)
+                ingredient = data['theIngredient']
                 pantry = Pantry.objects.get(user_id = request.user.id)
                 if Ingredient.objects.filter(name = ingredient).exists():
                     ing_id = Ingredient.objects.get(name = ingredient).id
