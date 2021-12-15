@@ -160,13 +160,10 @@ class PantryRecipeView(View):
 
 class FavoriteRecipeView(View):
     @login_decorator
-    def post(self,request):
+    def post(self,request,recipe_id):
         try:
             if request.user != '':
                 user = User.objects.get(id = request.user.id)
-                data = json.loads(request.body)
-                print("data!!!!!",data)
-                recipe_id = data['id']
                 user.favRecipes.append(recipe_id)
                 user.save()
                 return HttpResponse(status=200)
