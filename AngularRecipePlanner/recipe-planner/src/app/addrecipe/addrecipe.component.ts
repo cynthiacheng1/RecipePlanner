@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr'
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators'
 import { throwError } from 'rxjs';
+import { Recipe } from '../models/recipe.model';
 
 @Component({
   selector: 'app-addrecipe',
@@ -44,7 +45,8 @@ export class AddrecipeComponent implements OnInit {
       console.log(localStorage.getItem("token"))
       this._recipeService.AddRecipe(this.user, this.recipe).pipe(catchError(this.handleError)).subscribe((recipes) => { 
         this.toastr.success("Recipe Added!")
-        location.reload();
+        this.recipe = new Recipe2();
+        this.ngOnInit();
       }
       ),
       (err: Error) => {
