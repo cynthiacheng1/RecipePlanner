@@ -19,6 +19,7 @@ export class RecipeComponent implements OnInit {
   user = new User();
   recipe = new Recipe();
   statusMessage: string;
+  id: number;
 
   constructor(private router:Router, private _loginService:LoginService, private _recipeService:RecipeService, 
     private _contextService:ContextService, private toastr: ToastrService) { }
@@ -26,10 +27,10 @@ export class RecipeComponent implements OnInit {
   ngOnInit(): void {
     if (this.ifLogged()){
       this.user.email = this._contextService.getEmail();
+      this.user.token = this._contextService.getToken();
     }
 
     this.getRecipe(parseInt(localStorage.getItem("recipe") as string));
-    localStorage.removeItem("recipe");
   }
 
   ifLogged(){
@@ -51,10 +52,25 @@ export class RecipeComponent implements OnInit {
     }
   }
 
-  // check if 200 response works
-  favorite(recipe: Recipe){
-    this._recipeService.AddFavorite(this.user, recipe).pipe(catchError(this.handleError)).subscribe((recipe) => { 
-      this.recipe = recipe;
+  favorite(){
+    this.id = this.recipe.id;
+    this.recipe = new Recipe();
+    this.recipe.id = this.id;
+
+    this._recipeService.AddFavorite(this.user, this.recipe).pipe(catchError(this.handleError)).subscribe(() => { 
+      this.toastr.success("Added as favorite")
+      this.ngOnInit();
+    }
+    ),
+    (err: Error) => {
+      this.statusMessage = "Favorite Recipe Error";
+      console.log(this.statusMessage, err)
+    }
+  }
+
+  unfavorite(){
+    this._recipeService.RemoveFavorite(this.user, this.recipe).pipe(catchError(this.handleError)).subscribe(() => { 
+      this.toastr.success("Removed as favorite")
     }
     ),
     (err: Error) => {
@@ -67,7 +83,5 @@ export class RecipeComponent implements OnInit {
     this.toastr.error("something failed")
     return throwError("error");
   }
-
-
 
 }

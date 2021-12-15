@@ -28,11 +28,13 @@ export class PantryComponent implements OnInit {
     this.user.email = this._contextService.getEmail();
     this.user.token = this._contextService.getToken();
     this.getPantryIngredients();
+    this.ingredient = "";
   }
 
   getPantryIngredients(){
     this._recipeService.SeePantryIngredients(this.user).pipe(catchError(this.handleError)).subscribe((ingredients) => {
-      this.ingredients = ingredients;
+      this.ingredients = ingredients.data;
+      console.log(this.ingredients)
     }
     ),
     (err: Error) => {
@@ -45,8 +47,8 @@ export class PantryComponent implements OnInit {
     console.log(this.ingredient)
     console.log(this.user.token)
     this._recipeService.AddPantryIngredient(this.user, this.ingredient).pipe(catchError(this.handleError)).subscribe(() => { 
-      this.getPantryIngredients;
-      location.reload();
+      this.toastr.success(this.ingredient + " added to your pantry")
+      this.ngOnInit();
     }
     ),
     (err: Error) => {
@@ -57,8 +59,8 @@ export class PantryComponent implements OnInit {
 
   removeIngredient(){
     this._recipeService.RemovePantryIngredient(this.user, this.ingredient).pipe(catchError(this.handleError)).subscribe(() => { 
-      this.getPantryIngredients;
-      location.reload();
+      this.toastr.success(this.ingredient + " removed from your pantry")
+      this.ngOnInit();
     }
     ),
     (err: Error) => {

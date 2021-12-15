@@ -25,6 +25,7 @@
                 <button class="btn btn-info ml-2 mr-2" (click)="vegetarian()" style = "margin-top: 5px;">Vegetarian</button>
                 <button class="btn btn-info ml-2 mr-2" (click)="all()" style = "margin-top: 5px;">All Recipes</button>
                 <button class="btn btn-info ml-2 mr-2" (click)="getAllPantryRecipes()" style = "margin-top: 5px;" *ngIf = "ifLogged()">Pantry Recipes</button>
+                <button class="btn btn-info ml-2 mr-2" (click)="getFavorites()" style = "margin-top: 5px;" *ngIf = "ifLogged()">Your Favorites</button>
               </div>
             </div>
             <!-- end of tag container -->
