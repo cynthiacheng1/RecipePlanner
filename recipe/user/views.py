@@ -160,7 +160,7 @@ class PantryRecipeView(View):
 
 class FavoriteRecipeView(View):
     @login_decorator
-    def post(self,request,recipe_id):
+    def post(self,request):
         try:
             if request.user != '':
                 user = User.objects.get(id = request.user.id)
