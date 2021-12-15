@@ -73,10 +73,11 @@ class ProfileView(View):
 
 class AddPantryView(View):
     @login_decorator
-    def post(self,request,ingredient):
+    def post(self,request):
         try:
             if request.user != '':
-                ingredient = ingredient.replace('_',' ')
+                data = json.loads(request.body)
+                ingredient = data['theIngredient']
                 pantry = Pantry.objects.get(user_id = request.user.id)
                 if Ingredient.objects.filter(name = ingredient).exists():
                     ing_id = Ingredient.objects.get(name = ingredient).id
@@ -158,11 +159,9 @@ class PantryRecipeView(View):
 
 class FavoriteRecipeView(View):
     @login_decorator
-    def post(self,request):
+    def post(self,request,recipe_id):
         try:
             if request.user != '':
-                data = json.loads(request.body)
-                recipe_id = data['recipe_id']
                 user = User.objects.get(id = request.user.id)
                 user.favRecipes.append(recipe_id)
                 user.save()
@@ -171,22 +170,8 @@ class FavoriteRecipeView(View):
                 return JsonResponse({'message':'INVALID_USER'}, status=400)
         except:
             return JsonResponse({'message':'INVALID_KEYS'}, status=400)
-    
-    @login_decorator
-    def delete(self,request):
-        try:
-            if request.user != '':
-                data = json.loads(request.body)
-                recipe_id = data['recipe_id']
-                user = User.objects.get(id = request.user.id)
-                user.favRecipes.remove(recipe_id)
-                user.save()
-                return HttpResponse(status=200)
-            else:
-                return JsonResponse({'message':'INVALID_USER'}, status=400)
-        except:
-            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
-    
+
+class FavoriteView(View): 
     @login_decorator
     def get(self,request):
         try:
@@ -212,3 +197,16 @@ class FavoriteRecipeView(View):
         except:
             return JsonResponse({'message':'INVALID_KEYS'}, status=400)
 
+class FavoriteDeleteView(View):
+    @login_decorator
+    def post(self,request,recipe_id):
+        try:
+            if request.user != '':
+                user = User.objects.get(id = request.user.id)
+                user.favRecipes.remove(recipe_id)
+                user.save()
+                return HttpResponse(status=200)
+            else:
+                return JsonResponse({'message':'INVALID_USER'}, status=400)
+        except:
+            return JsonResponse({'message':'INVALID_KEYS'}, status=400)
