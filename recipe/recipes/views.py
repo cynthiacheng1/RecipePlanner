@@ -69,11 +69,14 @@ class RecipeListView(View):
                 info = data['info']
                 ingredients_list = data['ingredients_list'].split(', ')
                 encoded_lst = [0]*52
+                ingredients = ''
                 for ing_name in ingredients_list:
                     ingredient_id = Ingredient.objects.get(name = ing_name).id
                     encoded_lst[ingredient_id - 1] = 1
+                    ingredients += ing_name + ", "
                 Recipe.objects.create(
                     name = name,
+                    ingredients = ingredients,
                     cleaned_ingredients = encoded_lst,
                     instructions = instructions,
                     info = info,
