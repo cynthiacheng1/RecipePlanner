@@ -46,8 +46,9 @@
        
         </article>
 
-        <a class="reg" *ngIf = "ifLogged()" (click)="favorite()"><button type="button">Favorite</button></a>
-        <a class="reg" *ngIf = "ifLogged()" (click)="unfavorite()"><button type="button">Unfavorite</button></a>
+        <a class="reg" *ngIf = "ifLogged() && !isFavorite()"(click)="favorite()"><button type="button">Favorite</button></a>
+        <a class="reg" *ngIf = "ifLogged() && isFavorite()" (click)="unfavorite()"><button type="button">Unfavorite</button></a>
+
       </section>
     </div>
   </main>

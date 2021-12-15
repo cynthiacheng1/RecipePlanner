@@ -49,8 +49,8 @@ export class LoginComponent implements OnInit {
       this.reset();
       this.handleError(error);
     }
-
   }
+  
   private reset(){
       this.user = new User();
   }

@@ -13,7 +13,6 @@ export class NavbarComponent implements OnInit {
   constructor(private _contextService:ContextService, private _routerService:Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-
   }
 
   ifLogged(){

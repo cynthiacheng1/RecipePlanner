@@ -25,10 +25,14 @@ export class PantryComponent implements OnInit {
     private _contextService:ContextService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.user.email = this._contextService.getEmail();
-    this.user.token = this._contextService.getToken();
-    this.getPantryIngredients();
-    this.ingredient = "";
+    if (localStorage.getItem("logged") == "true"){
+      this.user.email = this._contextService.getEmail();
+      this.user.token = this._contextService.getToken();
+      this.getPantryIngredients();
+      this.ingredient = "";
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
   getPantryIngredients(){

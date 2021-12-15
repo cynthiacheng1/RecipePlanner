@@ -21,16 +21,19 @@ export class RecipeComponent implements OnInit {
   statusMessage: string;
   id: number;
 
+  favoriteBool: boolean;
+
+  recipes: Recipe[]
+
   constructor(private router:Router, private _loginService:LoginService, private _recipeService:RecipeService, 
     private _contextService:ContextService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.getRecipe(parseInt(localStorage.getItem("recipe") as string));
     if (this.ifLogged()){
       this.user.email = this._contextService.getEmail();
       this.user.token = this._contextService.getToken();
     }
-
-    this.getRecipe(parseInt(localStorage.getItem("recipe") as string));
   }
 
   ifLogged(){
@@ -40,16 +43,49 @@ export class RecipeComponent implements OnInit {
     return false;
   }
 
+  isFavorite(){
+    return this.favoriteBool;
+  }
+
   getRecipe(recipeId: number){
     this._recipeService.getRecipesById(recipeId).pipe(catchError(this.handleError)).subscribe((recipe) => { 
       this.recipe = recipe;
       console.log(this.recipe);
+      if(this.ifLogged()){
+        this.checkFavorite();
+      }
+      
     }
     ),
     (err: Error) => {
       this.statusMessage = "Get Recipe Error";
       console.log(this.statusMessage, err)
     }
+  }
+
+  checkFavorite(){
+    this._recipeService.getFavorites(this.user).pipe(catchError(this.handleError)).subscribe((recipes) => { 
+      this.recipes = recipes.data;
+
+      var isThere = false;
+      for (var val of this.recipes){
+        if (val.id == this.recipe.id){
+          console.log("Reached")
+          isThere = true;
+          this.favoriteBool = true;
+        }
+      }
+      if(!isThere){
+        this.favoriteBool = false;
+      }
+    }
+    ),
+    (err: Error) => {
+      this.statusMessage = "Favorite Recipes Error";
+      console.log(this.statusMessage, err)
+    }
+
+    
   }
 
   favorite(){
@@ -71,6 +107,7 @@ export class RecipeComponent implements OnInit {
   unfavorite(){
     this._recipeService.RemoveFavorite(this.user, this.recipe).pipe(catchError(this.handleError)).subscribe(() => { 
       this.toastr.success("Removed as favorite")
+      this.ngOnInit();
     }
     ),
     (err: Error) => {

@@ -4,6 +4,8 @@ import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 import { ContextService } from '../services/context.service';
 import { ToastrService } from 'ngx-toastr';
+import { catchError } from 'rxjs/operators'
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -42,17 +44,45 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  registerAuth(userData: User){
+  registerAuth(userData: User) {
 
     if (userData != null){
-      this._contextService.store(this.user);
-      this.router.navigateByUrl('home')
-      this.toastr.success("Registration Successful")
-      console.log("registration successful")
+      
+      this._loginService.login(this.user).pipe(catchError(this.handleError)).subscribe((tokenData) => {
+        console.log(tokenData);
+        this.loginAuth(tokenData.token);
+      }
+      ),
+      (err: Error) => {
+        this.statusMessage = "Login Error";
+        console.log(this.statusMessage, err)
+      }
     } 
     else {
       this.reset();
     }    
+  }
+
+  loginAuth(tokenData: string){
+    try{
+      this.user.token = tokenData;
+      this._contextService.store(this.user);
+      this.router.navigateByUrl('home')
+
+      this.toastr.success("Registration Successful")
+      console.log("registration successful")
+
+    } catch(error: any){
+
+      this.reset();
+      this.handleError(error);
+    }
+  }
+
+  handleError(error: any){
+    console.log(error);
+    this.toastr.error("Login failed")
+    return throwError("error");
   }
 
   private reset(){

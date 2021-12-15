@@ -23,30 +23,62 @@ npm, node, django, angular, postgresql
 git clone https://github.com/cynthiacheng1/RecipePlanner.git
 ```
 
-2.) Go to the project directory
+2.) Go to the Django project directory
 
 ```bash
-  cd AngularRecipePlanner/recipe-planner
+  cd recipe
 ```
 
-3.) Install dependencies
+3.) Install required Python dependencies
 
 ```bash
-  npm install
+  pip install -r requirements.txt
+```
+4.) Start Django server
+
+```bash
+  python manage.py runserver
 ```
 
-4.) Start the server
+5.) Install required Angular dependencies
+
+  Go to the Angular project folder
+```bash
+  cd ../AngularRecipePlanner/recipe-planner
+```
+  Install the necessary Angular packages
+  Install node.js (Make sure npm path is in your system's environment variables)
+  Install Angular using the following command
+```bash
+  npm install -g @angular/cli
+```
+  Make sure ng path is in your system's environment variables (Usually C:\Users\user\AppData\Roaming\npm\node_modules\@angular\cli\bin)
+  Install toastr using the following commands
+  ```bash
+  npm install ngx-toastr --save
+  npm install @angular/animations --save
+```
+  Install JQuery
+  ```bash
+  npm install jquery -- save
+  ```
+
+6.) Start the Angular server
 
 ```bash
   ng serve
 ```
+7.) Navigate to the website page
 
+  http://localhost:4200/
 
 ## Tech Stack
 
-**Client:** Angular, Bootstrap
+**Client:** Angular, Bootstrap, toastr, JQuery
 
 **Server:** Node, Django
+
+**Database:** PostgreSQL
 
 ## Authors
 

@@ -27,6 +27,8 @@ export class AddrecipeComponent implements OnInit {
       if(this.ifLogged()){
         this.user.email = this._contextService.getEmail();
         this.user.token = this._contextService.getToken();
+      } else{
+        this.router.navigate(['login']);
       }
     }
   
