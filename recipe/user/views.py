@@ -160,10 +160,12 @@ class PantryRecipeView(View):
 
 class FavoriteRecipeView(View):
     @login_decorator
-    def post(self,request,recipe_id):
+    def post(self,request):
         try:
             if request.user != '':
                 user = User.objects.get(id = request.user.id)
+                data = json.loads(request.body)
+                recipe_id = data['id']
                 user.favRecipes.append(recipe_id)
                 user.save()
                 return HttpResponse(status=200)
@@ -200,10 +202,12 @@ class FavoriteView(View):
 
 class FavoriteDeleteView(View):
     @login_decorator
-    def post(self,request,recipe_id):
+    def post(self,request):
         try:
             if request.user != '':
                 user = User.objects.get(id = request.user.id)
+                data = json.loads(request.body)
+                recipe_id = data['id']
                 user.favRecipes.remove(recipe_id)
                 user.save()
                 return HttpResponse(status=200)

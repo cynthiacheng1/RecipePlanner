@@ -10,6 +10,6 @@ urlpatterns = [
     path('/pantry-recipe', PantryRecipeView.as_view()),
     path('/addfavorite', FavoriteRecipeView.as_view()),
     path('/pantry-delete', PantryDeleteView.as_view()),
-    path('/favorite-delete/<int:recipe_id>',FavoriteDeleteView.as_view()),
+    path('/favorite-delete',FavoriteDeleteView.as_view()),
     path('/favorite', FavoriteView.as_view())
 ]
